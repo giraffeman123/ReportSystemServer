@@ -37,7 +37,7 @@ public class Services {
 
         /* Esta linea de codigo es el problema que estoy solucionando ahora. */
         /* El problema es: como parsear la clase lider en formato JSON */
-        //List<Lider> lista = ServiceFacadeLocator.getInstanceLiderFacade().getAllLideres();
+        List<Lider> lista = ServiceFacadeLocator.getInstanceLiderFacade().getAllLideres();
         
         return reponseOut("hola", "", Response.Status.CREATED);
 
