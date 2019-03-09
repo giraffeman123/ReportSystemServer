@@ -5,6 +5,7 @@
  */
 package com.furukawa.reportsystem.entidad;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -40,22 +41,29 @@ public class Empleado implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "codigoEmpleado")
+    @Expose(serialize = true)
     private String codigoEmpleado;
     @Basic(optional = false)
     @Column(name = "nombre")
+    @Expose(serialize = true)
     private String nombre;
     @Basic(optional = false)
     @Column(name = "puesto")
+    @Expose(serialize = true)
     private String puesto;
     @Basic(optional = false)
     @Column(name = "turno")
+    @Expose(serialize = true)
     private String turno;
     @Lob
     @Column(name = "foto")
+    @Expose(serialize = true)
     private byte[] foto;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "empleado")
+    @Expose(serialize = false)
     private Lider lider;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "asociado")
+    @Expose(serialize = false)
     private List<Defecto> defectoList;
 
     public Empleado() {

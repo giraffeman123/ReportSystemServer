@@ -17,7 +17,7 @@ public class Test {
     public static void main(String[] args){    
         List<Lider> lista = ServiceFacadeLocator.getInstanceLiderFacade().getAllLideres();
         for(Lider lider : lista){   System.out.println("id: "+lider.getEmpleado().getNombre());   }
-//        System.out.println("Modifico?"+ServiceFacadeLocator.
+//      System.out.println("Modifico?"+ServiceFacadeLocator.
 //                getInstanceLiderFacade().actualizarLider("AAAA", "kevin", "Fusebox", 0, "Vespertino", null));
     }
 }

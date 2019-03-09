@@ -39,7 +39,7 @@ public class Services {
         /* El problema es: como parsear la clase lider en formato JSON */
         List<Lider> lista = ServiceFacadeLocator.getInstanceLiderFacade().getAllLideres();
         
-        return reponseOut("hola", "", Response.Status.CREATED);
+        return reponseOut(lista, "", Response.Status.CREATED);
 
     }
     
@@ -52,7 +52,7 @@ public class Services {
      */    
     private String reponseOut(Object lista, String mensaje, Response.Status status) {
 
-        GsonBuilder b = new GsonBuilder();
+        GsonBuilder b = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
         b.registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY);
         b.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
         Gson gson = b.create();
