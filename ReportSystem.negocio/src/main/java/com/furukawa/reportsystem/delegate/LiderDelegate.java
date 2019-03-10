@@ -29,12 +29,11 @@ public class LiderDelegate {
     
     /***
      * 
-     * @param id de lider
-     * @return un lider con el id que se busco
+     * @param codigoEmpleado
+     * @return un lider con el codigo de Empleado que se busco
      */
     public Lider getLiderByCodigoEmpleado(String codigoEmpleado){
-        Empleado liderEmpleado = ServiceLocator.getInstanceEmpleadoDAO().findByOneParameterUnique(codigoEmpleado, "codigoEmpleado");
-        return ServiceLocator.getInstanceLiderDAO().findByOneParameterUnique(liderEmpleado.getCodigoEmpleado(), codigoEmpleado);
+        return ServiceLocator.getInstanceLiderDAO().findByOneParameterUnique(codigoEmpleado, "codigoEmpleado");
     }
     
     /***
@@ -43,7 +42,7 @@ public class LiderDelegate {
      * @return un lider con el nombre que se busco
      */
     public List<Lider> getAllLideresByNombre(String nombre){
-        Empleado liderEmpleado = ServiceLocator.getInstanceEmpleadoDAO().findByOneParameterUnique(nombre, nombre);
+        Empleado liderEmpleado = ServiceLocator.getInstanceEmpleadoDAO().findByOneParameterUnique(nombre, "nombre");
         return ServiceLocator.getInstanceLiderDAO().findByOneParameter(liderEmpleado.getCodigoEmpleado(), "codigoEmpleado");
     }
 }

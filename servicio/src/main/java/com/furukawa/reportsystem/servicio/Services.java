@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -28,19 +29,40 @@ public class Services {
      * @GET es el tipo de Peticion a la cual el metodo se convertira
      * @PATH es el url bajo el cual se llamara al metodo getAllLideres desde el navegador, en este caso /lider
      * @Produces es el tipo de formato MIME bajo el cual se dara la respuesta, en este caso JSON
-     * @return la respuesta del cliente en formato String
+     * @return todos los lideres encontrados en String con formato JSON ; null
      */    
     @GET
-    @Path("/lider")
+    @Path("/allLideres")
     @Produces(MediaType.APPLICATION_JSON)
     public String getAllLideres() {
-
-        /* Esta linea de codigo es el problema que estoy solucionando ahora. */
-        /* El problema es: como parsear la clase lider en formato JSON */
         List<Lider> lista = ServiceFacadeLocator.getInstanceLiderFacade().getAllLideres();
-        
-        return reponseOut(lista, "", Response.Status.CREATED);
-
+        return responseOut(lista, "", Response.Status.CREATED);
+    }
+    
+    /***
+     * 
+     * @param codigo codigo de empleado del lider
+     * @return el lider encontrado en String con formato JSON ; null
+     */
+    @GET
+    @Path("/liderByCodigo/{codigo}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getLiderByCodigoEmpleado(@PathParam("codigo") String codigo){
+        Lider lider = ServiceFacadeLocator.getInstanceLiderFacade().getLiderByCodigoEmpleado(codigo);
+        return responseOut(lider,"",Response.Status.CREATED);
+    }
+    
+    /***
+     * 
+     * @param nombre de lider(es) a buscar
+     * @return todos los lideres encontrados en String con formato JSON ; null
+     */
+    @GET
+    @Path("/allLideresByNombre/{nombre}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllLideresByNombre(@PathParam("nombre") String nombre){
+        List<Lider> lista = ServiceFacadeLocator.getInstanceLiderFacade().getAllLideresByNombre(nombre);
+        return responseOut(lista,"",Response.Status.CREATED);
     }
     
     /***
@@ -50,7 +72,7 @@ public class Services {
      * @param status el status de la peticion HTTP a enviar
      * @return el objeto lista en formato JSON
      */    
-    private String reponseOut(Object lista, String mensaje, Response.Status status) {
+    private String responseOut(Object lista, String mensaje, Response.Status status) {
 
         GsonBuilder b = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
         b.registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY);
