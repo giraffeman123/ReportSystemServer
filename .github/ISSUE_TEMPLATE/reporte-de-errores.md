@@ -7,32 +7,27 @@ assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**Describe el error**
+Una descripción clara y concisa de que es el error.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+**Para Reproducirse**
+Pasos para reproducir el comportamiento del error(ejemplo):
+1. Ir a '...'
+2. Click en '....'
+3. Deslizar hacia '....'
+4. Mirar error
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**Comportamiento esperado**
+Una descripción clara y concisa de que es lo que hay que esperar que pase.
 
 **Screenshots**
-If applicable, add screenshots to help explain your problem.
+Si es posible, añadir screenshots para explicar tu problema.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
+**Desktop (favor de llenar la siguiente información):**
+ - TomCat Apache Version: [e.g. 8.0]
+ - Netbeans o IDE utilizado[e.g. atom,notepad]
  - Browser [e.g. chrome, safari]
  - Version [e.g. 22]
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
-
-**Additional context**
-Add any other context about the problem here.
+**Contexto Addicional**
+Añadir de ser necesario mas cosas sobre el problema aqui.
