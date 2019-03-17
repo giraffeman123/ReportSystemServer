@@ -31,6 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Defecto.findAll", query = "SELECT d FROM Defecto d")
     , @NamedQuery(name = "Defecto.findByCodigoDefecto", query = "SELECT d FROM Defecto d WHERE d.codigoDefecto = :codigoDefecto")
+    , @NamedQuery(name = "Defecto.findByLinea", query = "SELECT d FROM Defecto d WHERE d.linea = :linea")
+    , @NamedQuery(name = "Defecto.findByEstacion", query = "SELECT d FROM Defecto d WHERE d.estacion = :estacion")
     , @NamedQuery(name = "Defecto.findByCantidad", query = "SELECT d FROM Defecto d WHERE d.cantidad = :cantidad")
     , @NamedQuery(name = "Defecto.findByFecha", query = "SELECT d FROM Defecto d WHERE d.fecha = :fecha")
     , @NamedQuery(name = "Defecto.findByComentario", query = "SELECT d FROM Defecto d WHERE d.comentario = :comentario")})
@@ -41,6 +43,12 @@ public class Defecto implements Serializable {
     @Basic(optional = false)
     @Column(name = "codigoDefecto")
     private String codigoDefecto;
+    @Basic(optional = false)
+    @Column(name = "linea")
+    private int linea;
+    @Basic(optional = false)
+    @Column(name = "estacion")
+    private int estacion;
     @Basic(optional = false)
     @Column(name = "cantidad")
     private int cantidad;
@@ -67,8 +75,10 @@ public class Defecto implements Serializable {
         this.codigoDefecto = codigoDefecto;
     }
 
-    public Defecto(String codigoDefecto, int cantidad, Date fecha) {
+    public Defecto(String codigoDefecto, int linea, int estacion, int cantidad, Date fecha) {
         this.codigoDefecto = codigoDefecto;
+        this.linea = linea;
+        this.estacion = estacion;
         this.cantidad = cantidad;
         this.fecha = fecha;
     }
@@ -79,6 +89,22 @@ public class Defecto implements Serializable {
 
     public void setCodigoDefecto(String codigoDefecto) {
         this.codigoDefecto = codigoDefecto;
+    }
+
+    public int getLinea() {
+        return linea;
+    }
+
+    public void setLinea(int linea) {
+        this.linea = linea;
+    }
+
+    public int getEstacion() {
+        return estacion;
+    }
+
+    public void setEstacion(int estacion) {
+        this.estacion = estacion;
     }
 
     public int getCantidad() {
