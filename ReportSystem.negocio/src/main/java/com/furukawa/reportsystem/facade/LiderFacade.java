@@ -31,7 +31,7 @@ public class LiderFacade {
     
     /***
      * 
-     * @param id de lider a buscar
+     * @param codigoEmpleado
      * @return lider encontrado
      */
     public Lider getLiderByCodigoEmpleado(String codigoEmpleado){
