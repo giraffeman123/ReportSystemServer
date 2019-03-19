@@ -2,7 +2,7 @@
 Aqui se encuentra el servidor del sistema de linea de produccion
 
 Historial
-- La version inicial cuenta solamente con consultas de lider
+- La version inicial contaba solamente con consultas de lider
 
 Requisitos
 - De preferencia abrir desde netbeans y construir con dependencias(build with dependencies) cada una de las capas para que se instalen 
