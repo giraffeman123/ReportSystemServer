@@ -45,4 +45,24 @@ public class LiderDelegate {
         Empleado liderEmpleado = ServiceLocator.getInstanceEmpleadoDAO().findByOneParameterUnique(nombre, "nombre");
         return ServiceLocator.getInstanceLiderDAO().findByOneParameter(liderEmpleado.getCodigoEmpleado(), "codigoEmpleado");
     }
+    
+    
+    
+  
+        /***
+     * 
+     * @param codigoEmpleado codigo del empleado
+     * @param Area Area del lider
+     * @param Linea Linea del lider
+     * @param e Empleado Objeto
+     */
+        
+    public void saveLider(String codigoEmpleado, String Area, int Linea, Empleado e){
+        Lider l = new Lider();
+        l.setCodigoEmpleado(codigoEmpleado);
+        l.setArea(Area);
+        l.setLinea(Linea);
+        l.setEmpleado(e);
+        ServiceLocator.getInstanceLiderDAO().saveOrUpdate(l);
+    }
 }

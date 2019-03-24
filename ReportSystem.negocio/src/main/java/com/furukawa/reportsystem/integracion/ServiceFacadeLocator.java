@@ -13,6 +13,7 @@ import com.furukawa.reportsystem.facade.LiderFacade;
  */
 public class ServiceFacadeLocator {
     private static LiderFacade liderFacade;
+
     
     /***
      * 

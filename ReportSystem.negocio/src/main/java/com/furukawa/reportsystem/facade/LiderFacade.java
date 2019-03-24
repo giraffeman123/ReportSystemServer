@@ -6,6 +6,7 @@
 package com.furukawa.reportsystem.facade;
 
 import com.furukawa.reportsystem.delegate.LiderDelegate;
+import com.furukawa.reportsystem.entidad.Empleado;
 import com.furukawa.reportsystem.entidad.Lider;
 import java.util.List;
 
@@ -46,4 +47,17 @@ public class LiderFacade {
     public List<Lider> getAllLideresByNombre(String nombre){
         return delegate.getAllLideresByNombre(nombre);
     }
+
+    /***
+     * 
+     * @param codigoEmpleado codigo del empleado
+     * @param Area Area del lider
+     * @param Linea Linea del lider
+     * @param e Empleado Objeto
+     */
+    public void saveLider(String codigoEmpleado, String Area, int Linea, Empleado e){
+        delegate.saveLider(codigoEmpleado, Area, Linea, e);
+    }
+    
+    
 }
