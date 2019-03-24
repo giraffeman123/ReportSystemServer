@@ -28,8 +28,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "CodigoDefecto.findAll", query = "SELECT c FROM CodigoDefecto c")
     , @NamedQuery(name = "CodigoDefecto.findByArea", query = "SELECT c FROM CodigoDefecto c WHERE c.area = :area")
-    , @NamedQuery(name = "CodigoDefecto.findByLinea", query = "SELECT c FROM CodigoDefecto c WHERE c.linea = :linea")
-    , @NamedQuery(name = "CodigoDefecto.findByEstacion", query = "SELECT c FROM CodigoDefecto c WHERE c.estacion = :estacion")
     , @NamedQuery(name = "CodigoDefecto.findByGravedad", query = "SELECT c FROM CodigoDefecto c WHERE c.gravedad = :gravedad")
     , @NamedQuery(name = "CodigoDefecto.findByDescripcion", query = "SELECT c FROM CodigoDefecto c WHERE c.descripcion = :descripcion")
     , @NamedQuery(name = "CodigoDefecto.findByCodigoDefecto", query = "SELECT c FROM CodigoDefecto c WHERE c.codigoDefecto = :codigoDefecto")})
@@ -39,12 +37,6 @@ public class CodigoDefecto implements Serializable {
     @Basic(optional = false)
     @Column(name = "area")
     private String area;
-    @Basic(optional = false)
-    @Column(name = "linea")
-    private int linea;
-    @Basic(optional = false)
-    @Column(name = "estacion")
-    private int estacion;
     @Basic(optional = false)
     @Column(name = "gravedad")
     private String gravedad;
@@ -68,11 +60,9 @@ public class CodigoDefecto implements Serializable {
         this.codigoDefecto = codigoDefecto;
     }
 
-    public CodigoDefecto(String codigoDefecto, String area, int linea, int estacion, String gravedad, String descripcion) {
+    public CodigoDefecto(String codigoDefecto, String area, String gravedad, String descripcion) {
         this.codigoDefecto = codigoDefecto;
         this.area = area;
-        this.linea = linea;
-        this.estacion = estacion;
         this.gravedad = gravedad;
         this.descripcion = descripcion;
     }
@@ -83,22 +73,6 @@ public class CodigoDefecto implements Serializable {
 
     public void setArea(String area) {
         this.area = area;
-    }
-
-    public int getLinea() {
-        return linea;
-    }
-
-    public void setLinea(int linea) {
-        this.linea = linea;
-    }
-
-    public int getEstacion() {
-        return estacion;
-    }
-
-    public void setEstacion(int estacion) {
-        this.estacion = estacion;
     }
 
     public String getGravedad() {
