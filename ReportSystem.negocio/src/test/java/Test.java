@@ -5,8 +5,10 @@
  */
 
 
+import com.furukawa.reportsystem.entidad.Empleado;
 import com.furukawa.reportsystem.entidad.Lider;
 import com.furukawa.reportsystem.integracion.ServiceFacadeLocator;
+import com.furukawa.reportsystem.integracion.ServiceLocator;
 import java.util.List;
 
 /**
@@ -15,9 +17,20 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args){    
-        List<Lider> lista = ServiceFacadeLocator.getInstanceLiderFacade().getAllLideres();
-        for(Lider lider : lista){   System.out.println("id: "+lider.getEmpleado().getNombre());   }
+//        List<Lider> lista = ServiceFacadeLocator.getInstanceLiderFacade().getAllLideres();
+//        for(Lider lider : lista){   System.out.println("id: "+lider.getEmpleado().getNombre());   }
+        
 //      System.out.println("Modifico?"+ServiceFacadeLocator.
 //                getInstanceLiderFacade().actualizarLider("AAAA", "kevin", "Fusebox", 0, "Vespertino", null));
+
+//        Lider l = new Lider();
+//        Empleado e = new Empleado();
+//
+//        l.setCodigoEmpleado("ZZZZ");
+//        l.setArea("RFC");
+//        l.setLinea(2);
+//        l.setEmpleado(e);
+//        
+//        ServiceLocator.getInstanceLiderDAO().saveOrUpdate(l);
     }
 }
