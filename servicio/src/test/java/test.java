@@ -2,7 +2,6 @@
 import com.furukawa.reportsystem.common.HibernateProxyTypeAdapter;
 import com.furukawa.reportsystem.entidad.Lider;
 import com.furukawa.reportsystem.integracion.ServiceFacadeLocator;
-import com.furukawa.reportsystem.servicio.Chingon;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
