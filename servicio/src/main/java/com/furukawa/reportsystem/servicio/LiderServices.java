@@ -74,7 +74,7 @@ public class LiderServices {
      * @param nombre de lidera crear
      * @param linea en la que trabajara el lider
      * @param puesto del empleado
-     * @param turno del empleado a ser lider
+     * @param turno del empleado a ser lider ,,
      * @return todos los lideres encontrados en String con formato JSON ; null
      */
     @POST
