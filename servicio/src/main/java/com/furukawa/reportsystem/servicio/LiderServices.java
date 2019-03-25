@@ -86,6 +86,37 @@ public class LiderServices {
         System.out.println(codigoEmpleado+area+linea+nombre+turno);
         return responseOut("","",Response.Status.ACCEPTED);
     }
+    
+    /***
+     * 
+     * @param codigoEmpleado codigo de empleado a hacer Lider
+     * @param area del empleado a crear
+     * @param nombre de lidera crear
+     * @param linea en la que trabajara el lider
+     * @param puesto del empleado
+     * @param turno del empleado a ser lider ,,
+     * @return todos los lideres encontrados en String con formato JSON ; null
+     */
+    @POST
+    @Path("/nuevoLider")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String saveLider(@FormParam("codigoEmpleado") String codigoEmpleado, 
+                            @FormParam("area") String area,
+                            @FormParam("linea") String linea, 
+                            @FormParam("nombre") String nombre,
+                            @FormParam("puesto") String puesto,
+                            @FormParam("turno") String turno){
+        
+        Empleado e = new Empleado();
+        e.setCodigoEmpleado(codigoEmpleado);
+        e.setNombre(nombre);
+        e.setPuesto(puesto);
+        e.setTurno(turno);
+        
+        ServiceFacadeLocator.getInstanceLiderFacade().saveLider(codigoEmpleado, area, linea, e);
+        return responseOut("","",Response.Status.ACCEPTED);
+    }
+    
     /***
      * 
      * @param lista el objeto que se va parsear a JSON
