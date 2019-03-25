@@ -55,8 +55,9 @@ public class LiderFacade {
      * @param Linea Linea del lider
      * @param e Empleado Objeto
      */
-    public void saveLider(String codigoEmpleado, String Area, int Linea, Empleado e){
-        delegate.saveLider(codigoEmpleado, Area, Linea, e);
+    public void saveLider(String codigoEmpleado, String Area, String Linea, Empleado e){
+        int Line = Integer.parseInt(Linea);
+        delegate.saveLider(codigoEmpleado, Area, Line, e);
     }
     
     

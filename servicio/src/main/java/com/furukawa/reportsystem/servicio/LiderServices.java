@@ -6,12 +6,15 @@
 package com.furukawa.reportsystem.servicio;
 
 import com.furukawa.reportsystem.common.HibernateProxyTypeAdapter;
+import com.furukawa.reportsystem.entidad.Empleado;
 import com.furukawa.reportsystem.entidad.Lider;
 import com.furukawa.reportsystem.integracion.ServiceFacadeLocator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.List;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -63,6 +66,37 @@ public class LiderServices {
         List<Lider> lista = ServiceFacadeLocator.getInstanceLiderFacade().getAllLideresByNombre(nombre);
         return responseOut(lista,"",Response.Status.CREATED);
     }
+    
+    /***
+     * 
+     * @param codigoEmpleado codigo de empleado a hacer Lider
+     * @param area del empleado a crear
+     * @param nombre de lidera crear
+     * @param linea en la que trabajara el lider
+     * @param puesto del empleado
+     * @param turno del empleado a ser lider
+     * @return todos los lideres encontrados en String con formato JSON ; null
+     */
+    @POST
+    @Path("/nuevoLider")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String saveLider(@FormParam("codigoEmpleado") String codigoEmpleado, 
+                            @FormParam("area") String area,
+                            @FormParam("linea") String linea, 
+                            @FormParam("nombre") String nombre,
+                            @FormParam("puesto") String puesto,
+                            @FormParam("turno") String turno){
+        
+        Empleado e = new Empleado();
+        e.setCodigoEmpleado(codigoEmpleado);
+        e.setNombre(nombre);
+        e.setPuesto(puesto);
+        e.setTurno(turno);
+        
+        ServiceFacadeLocator.getInstanceLiderFacade().saveLider(codigoEmpleado, area, linea, e);
+        return responseOut("","",Response.Status.ACCEPTED);
+    }
+    
     
     /***
      * 
