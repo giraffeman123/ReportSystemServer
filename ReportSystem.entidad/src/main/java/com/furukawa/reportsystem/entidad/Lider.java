@@ -5,6 +5,7 @@
  */
 package com.furukawa.reportsystem.entidad;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -39,17 +40,22 @@ public class Lider implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "codigoEmpleado")
+    @Expose(serialize = true)
     private String codigoEmpleado;
     @Basic(optional = false)
     @Column(name = "area")
+    @Expose(serialize = true)
     private String area;
     @Basic(optional = false)
     @Column(name = "linea")
+    @Expose(serialize = true)
     private int linea;
     @JoinColumn(name = "codigoEmpleado", referencedColumnName = "codigoEmpleado", insertable = false, updatable = false)
     @OneToOne(optional = false)
+    @Expose(serialize = true)
     private Empleado empleado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lider")
+    @Expose(serialize = true)
     private List<Defecto> defectoList;
 
     public Lider() {

@@ -31,7 +31,7 @@ public class LiderFacade {
     
     /***
      * 
-     * @param id de lider a buscar
+     * @param codigoEmpleado
      * @return lider encontrado
      */
     public Lider getLiderByCodigoEmpleado(String codigoEmpleado){
@@ -45,65 +45,5 @@ public class LiderFacade {
      */
     public List<Lider> getAllLideresByNombre(String nombre){
         return delegate.getAllLideresByNombre(nombre);
-    }
-    
-    /***
-     * 
-     * @param codigoEmpleado de lider
-     * @param nombre de lider
-     * @param area de lider
-     * @param linea de lider
-     * @param turno de lider 
-     * @param foto de lider
-     * @return si pudo realizar actualizacion, 1 = si; 0 = no
-     */
-    public Boolean updateLider(String codigoEmpleado,String nombre,String area,int linea,String turno,byte[] foto){
-        Lider liderToUpdate = new Lider();
-        liderToUpdate.setCodigoEmpleado(codigoEmpleado);
-        liderToUpdate.setArea(area);
-        liderToUpdate.setLinea(linea);
-        
-        return delegate.updateLider(liderToUpdate);
-    }
-    
-    /***
-     * 
-     * @param codigoEmpleado
-     * @param area
-     * @param linea
-     * @return si pudo realizar la creacion de lider, 1 = si; 0 = no
-     */
-    public Boolean createLider(String codigoEmpleado,String nombre,String area,int linea,String turno,byte[] foto){
-        Lider liderToCreate = new Lider();
-        liderToCreate.setCodigoEmpleado(codigoEmpleado);
-        liderToCreate.setArea(area);
-        liderToCreate.setLinea(linea);
-
-        return delegate.createLider(liderToCreate);
-    }
-    
-    /***
-     * 
-     * @param id
-     * @return si pudo realizar el borrado, 1 = si; 0 = no
-     */
-    public Boolean deleteLiderByCodigoEmpleado(String codigoEmpleado){
-        return delegate.deleteLiderByCodigoEmpleado(codigoEmpleado);
-    }
-    
-    /***
-     * 
-     * @param codigoEmpleado
-     * @param area
-     * @param linea
-     * @return si pudo realizar el borrado, 1 = si; 0 = no
-     */
-    public Boolean deleteLider(String codigoEmpleado,String nombre,String area,int linea,String turno,byte[] foto){
-        Lider liderToDelete = new Lider();
-        liderToDelete.setCodigoEmpleado(codigoEmpleado);
-        liderToDelete.setArea(area);
-        liderToDelete.setLinea(linea);
-        
-        return delegate.deleteLider(liderToDelete);
     }
 }
