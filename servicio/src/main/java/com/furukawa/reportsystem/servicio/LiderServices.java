@@ -112,7 +112,8 @@ public class LiderServices {
         e.setNombre(nombre);
         e.setPuesto(puesto);
         e.setTurno(turno);
-        
+        e.setFoto(null);
+        System.out.println(area+linea);
         ServiceFacadeLocator.getInstanceLiderFacade().saveLider(codigoEmpleado, area, linea, e);
         return responseOut("","",Response.Status.ACCEPTED);
     }
