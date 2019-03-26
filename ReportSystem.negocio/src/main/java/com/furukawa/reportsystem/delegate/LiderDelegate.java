@@ -60,6 +60,7 @@ public class LiderDelegate {
         l.setArea(Area);
         l.setLinea(Linea);
         l.setEmpleado(e);
-        ServiceLocator.getInstanceLiderDAO().saveOrUpdate(l);
+        ServiceLocator.getInstanceEmpleadoDAO().save(e);
+        ServiceLocator.getInstanceLiderDAO().save(l);
     }    
 }
