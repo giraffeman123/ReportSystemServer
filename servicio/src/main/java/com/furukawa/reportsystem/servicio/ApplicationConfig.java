@@ -30,6 +30,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.furukawa.reportsystem.servicio.LiderServices.class);
+        resources.add(com.furukawa.reportsystem.servicio.Services.class);
     }
     
 }
