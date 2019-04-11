@@ -58,7 +58,16 @@ public class LiderFacade {
     public void saveLider(String codigoEmpleado, String Area, String Linea, Empleado e){
         int Line = Integer.parseInt(Linea);
         delegate.saveLider(codigoEmpleado, Area, Line, e);
-    }  
+    }    
+    
+    /***
+     * 
+     * @param codigoEmpleado de lider a eliminar
+     */
+    public void deleteLider(String codigoEmpleado){
+        delegate.deleteLider(codigoEmpleado);
+    }
+
     
     /***
      * 

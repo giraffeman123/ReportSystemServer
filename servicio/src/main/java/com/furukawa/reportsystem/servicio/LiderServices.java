@@ -12,6 +12,7 @@ import com.furukawa.reportsystem.integracion.ServiceFacadeLocator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.List;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -108,6 +109,19 @@ public class LiderServices {
     
     /***
      * 
+     * @param codigoEmpleado de lider a eliminar
+     * @return cdigo de empleado eliminado
+     */ 
+    @DELETE
+    @Path("/deleteLider")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String deleteLider(@FormParam("codigoEmpleado") String codigoEmpleado){
+        ServiceFacadeLocator.getInstanceLiderFacade().deleteLider(codigoEmpleado);
+        return responseOut(codigoEmpleado,"",Response.Status.ACCEPTED);
+    }
+
+    
+    /***
      * @param codigoEmpleado
      * @param linea
      * @param area
