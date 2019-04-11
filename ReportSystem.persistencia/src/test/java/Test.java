@@ -14,7 +14,7 @@ import com.furukawa.reportsystem.integracion.ServiceLocator;
  */
 public class Test {
     public static void main(String[] args){
-//        Lider l = new Lider();
+        Lider l = new Lider();
 //        l.setCodigoEmpleado("AAAA");
 //        l.setNombre("Elliot");
 //        l.setArea("Fusebox");
