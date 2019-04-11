@@ -58,5 +58,19 @@ public class LiderFacade {
     public void saveLider(String codigoEmpleado, String Area, String Linea, Empleado e){
         int Line = Integer.parseInt(Linea);
         delegate.saveLider(codigoEmpleado, Area, Line, e);
-    }    
+    }  
+    
+    /***
+     * 
+     * @param Codigo_empleado
+     * @param Linea
+     * @param Area
+     * @param Nombre
+     * @param Puesto
+     * @param Turno 
+     */
+    public void updateLider(String Codigo_empleado, String Linea , String Area , String Nombre , String Puesto , String Turno){
+        int linea = Integer.parseInt(Linea); 
+        delegate.updateLider(Codigo_empleado, linea, Area, Nombre, Puesto, Turno);
+    }        
 }
