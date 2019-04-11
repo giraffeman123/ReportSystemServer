@@ -109,7 +109,6 @@ public class LiderServices {
     
     /***
      * 
-<<<<<<< HEAD
      * @param codigoEmpleado de lider a eliminar
      * @return cdigo de empleado eliminado
      */ 
@@ -120,7 +119,9 @@ public class LiderServices {
         ServiceFacadeLocator.getInstanceLiderFacade().deleteLider(codigoEmpleado);
         return responseOut(codigoEmpleado,"",Response.Status.ACCEPTED);
     }
-=======
+
+    
+    /***
      * @param codigoEmpleado
      * @param linea
      * @param area
@@ -141,7 +142,6 @@ public class LiderServices {
         ServiceFacadeLocator.getInstanceLiderFacade().updateLider(codigoEmpleado, linea, area, nombre, puesto, turno);
         return responseOut("","",Response.Status.ACCEPTED);
     }    
->>>>>>> master
     
     /***
      * 
