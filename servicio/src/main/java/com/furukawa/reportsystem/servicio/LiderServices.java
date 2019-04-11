@@ -76,18 +76,6 @@ public class LiderServices {
         return responseOut(codigoEmpleado,"",Response.Status.ACCEPTED);
     }
     
-    @POST
-    @Path("/modificarLider")
-    public String updateLider(@FormParam("codigoEmpleado") String codigoEmpleado,
-                              @FormParam("area") String area, 
-                              @FormParam("linea") String linea,
-                              @FormParam("nombre") String nombre,
-                              @FormParam("puesto") String puesto,
-                              @FormParam("turno") String turno){
-        System.out.println(codigoEmpleado+area+linea+nombre+turno);
-        return responseOut("","",Response.Status.ACCEPTED);
-    }
-    
     /***
      * 
      * @param codigoEmpleado codigo de empleado a hacer Lider
@@ -121,6 +109,7 @@ public class LiderServices {
     
     /***
      * 
+<<<<<<< HEAD
      * @param codigoEmpleado de lider a eliminar
      * @return cdigo de empleado eliminado
      */ 
@@ -131,6 +120,28 @@ public class LiderServices {
         ServiceFacadeLocator.getInstanceLiderFacade().deleteLider(codigoEmpleado);
         return responseOut(codigoEmpleado,"",Response.Status.ACCEPTED);
     }
+=======
+     * @param codigoEmpleado
+     * @param linea
+     * @param area
+     * @param nombre
+     * @param puesto
+     * @param turno
+     * @return 
+     */
+    @POST
+    @Path("/modificarLider")
+    public String updateLider(@FormParam("codigoEmpleado") String codigoEmpleado,
+                              @FormParam("linea") String linea, 
+                              @FormParam("area") String area,
+                              @FormParam("nombre") String nombre,
+                              @FormParam("puesto") String puesto,
+                              @FormParam("turno") String turno){
+        System.out.println(codigoEmpleado+area+linea+nombre+turno);
+        ServiceFacadeLocator.getInstanceLiderFacade().updateLider(codigoEmpleado, linea, area, nombre, puesto, turno);
+        return responseOut("","",Response.Status.ACCEPTED);
+    }    
+>>>>>>> master
     
     /***
      * 
