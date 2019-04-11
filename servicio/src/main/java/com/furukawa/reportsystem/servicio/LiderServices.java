@@ -97,6 +97,28 @@ public class LiderServices {
         return responseOut("","",Response.Status.ACCEPTED);
     }
     
+    /***
+     * 
+     * @param codigoEmpleado
+     * @param linea
+     * @param area
+     * @param nombre
+     * @param puesto
+     * @param turno
+     * @return 
+     */
+    @POST
+    @Path("/modificarLider")
+    public String updateLider(@FormParam("codigoEmpleado") String codigoEmpleado,
+                              @FormParam("linea") String linea, 
+                              @FormParam("area") String area,
+                              @FormParam("nombre") String nombre,
+                              @FormParam("puesto") String puesto,
+                              @FormParam("turno") String turno){
+        System.out.println(codigoEmpleado+area+linea+nombre+turno);
+        ServiceFacadeLocator.getInstanceLiderFacade().updateLider(codigoEmpleado, linea, area, nombre, puesto, turno);
+        return responseOut("","",Response.Status.ACCEPTED);
+    }
     
     /***
      * 
