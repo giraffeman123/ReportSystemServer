@@ -67,7 +67,7 @@ public class LiderFacade {
     public void deleteLider(String codigoEmpleado){
         delegate.deleteLider(codigoEmpleado);
     }
-  
+
     
     /***
      * 

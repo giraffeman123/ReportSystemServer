@@ -119,6 +119,7 @@ public class LiderServices {
         ServiceFacadeLocator.getInstanceLiderFacade().deleteLider(codigoEmpleado);
         return responseOut(codigoEmpleado,"",Response.Status.ACCEPTED);
     }
+
     
     /***
      * @param codigoEmpleado
