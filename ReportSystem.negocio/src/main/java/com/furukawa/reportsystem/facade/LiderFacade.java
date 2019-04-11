@@ -58,7 +58,6 @@ public class LiderFacade {
     public void saveLider(String codigoEmpleado, String Area, String Linea, Empleado e){
         int Line = Integer.parseInt(Linea);
         delegate.saveLider(codigoEmpleado, Area, Line, e);
-<<<<<<< HEAD
     }    
     
     /***
@@ -68,9 +67,7 @@ public class LiderFacade {
     public void deleteLider(String codigoEmpleado){
         delegate.deleteLider(codigoEmpleado);
     }
-    
-=======
-    }  
+     
     
     /***
      * 
@@ -85,5 +82,4 @@ public class LiderFacade {
         int linea = Integer.parseInt(Linea); 
         delegate.updateLider(Codigo_empleado, linea, Area, Nombre, Puesto, Turno);
     }        
->>>>>>> master
 }

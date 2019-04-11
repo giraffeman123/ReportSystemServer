@@ -61,7 +61,6 @@ public class LiderDelegate {
         l.setEmpleado(e);
         ServiceLocator.getInstanceEmpleadoDAO().save(e);
         ServiceLocator.getInstanceLiderDAO().save(l);
-<<<<<<< HEAD
     }   
     
     /***
@@ -73,8 +72,7 @@ public class LiderDelegate {
                 "codigoEmpleado");
         ServiceLocator.getInstanceLiderDAO().delete(l);
     }
-=======
-    }    
+   
     
     /***
      * 
@@ -107,5 +105,4 @@ public class LiderDelegate {
         ServiceLocator.getInstanceEmpleadoDAO().update(e);
         ServiceLocator.getInstanceLiderDAO().update(r); //Llamado a la base de datos      
      }      
->>>>>>> master
 }
