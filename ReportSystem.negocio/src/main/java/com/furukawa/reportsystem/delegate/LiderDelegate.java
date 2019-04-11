@@ -46,14 +46,13 @@ public class LiderDelegate {
         return ServiceLocator.getInstanceLiderDAO().findByOneParameter(liderEmpleado.getCodigoEmpleado(), "codigoEmpleado");
     }
     
-        /***
+    /***
      * 
      * @param codigoEmpleado codigo del empleado
      * @param Area Area del lider
      * @param Linea Linea del lider
      * @param e Empleado Objeto
-     */
-        
+     */    
     public void saveLider(String codigoEmpleado, String Area, int Linea, Empleado e){
         Lider l = new Lider();
         l.setCodigoEmpleado(codigoEmpleado);
@@ -62,6 +61,19 @@ public class LiderDelegate {
         l.setEmpleado(e);
         ServiceLocator.getInstanceEmpleadoDAO().save(e);
         ServiceLocator.getInstanceLiderDAO().save(l);
+<<<<<<< HEAD
+    }   
+    
+    /***
+     * 
+     * @param codigoEmpleado de lider a eliminar
+     */
+    public void deleteLider(String codigoEmpleado){
+        Lider l = ServiceLocator.getInstanceLiderDAO().findByOneParameterUnique(codigoEmpleado,
+                "codigoEmpleado");
+        ServiceLocator.getInstanceLiderDAO().delete(l);
+    }
+=======
     }    
     
     /***
@@ -95,4 +107,5 @@ public class LiderDelegate {
         ServiceLocator.getInstanceEmpleadoDAO().update(e);
         ServiceLocator.getInstanceLiderDAO().update(r); //Llamado a la base de datos      
      }      
+>>>>>>> master
 }
