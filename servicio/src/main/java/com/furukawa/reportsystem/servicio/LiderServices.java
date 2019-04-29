@@ -69,7 +69,7 @@ public class LiderServices {
     }
     
     @POST
-    @Path("/deleteLiderByCodigo")
+    @Path("/deleteLiderByName")
     @Produces(MediaType.APPLICATION_JSON)
     public String deleteLiderByNombre(@FormParam("codigoEmpleado") String codigoEmpleado){
         System.out.println(codigoEmpleado);
@@ -103,8 +103,10 @@ public class LiderServices {
         e.setTurno(turno);
         e.setFoto(null);
         System.out.println(area+linea);
-        ServiceFacadeLocator.getInstanceLiderFacade().saveLider(codigoEmpleado, area, linea, e);
-        return responseOut("","",Response.Status.ACCEPTED);
+        if(ServiceFacadeLocator.getInstanceLiderFacade().saveLider(codigoEmpleado, area, linea, e))
+            return responseOut(codigoEmpleado,"",Response.Status.ACCEPTED);
+        else
+            return responseOut(null,"",Response.Status.ACCEPTED);
     }
     
     /***
@@ -112,12 +114,14 @@ public class LiderServices {
      * @param codigoEmpleado de lider a eliminar
      * @return cdigo de empleado eliminado
      */ 
-    @DELETE
-    @Path("/deleteLider")
+    @POST
+    @Path("/deleteLiderByCodigo")
     @Produces(MediaType.APPLICATION_JSON)
     public String deleteLider(@FormParam("codigoEmpleado") String codigoEmpleado){
-        ServiceFacadeLocator.getInstanceLiderFacade().deleteLider(codigoEmpleado);
-        return responseOut(codigoEmpleado,"",Response.Status.ACCEPTED);
+        if(ServiceFacadeLocator.getInstanceLiderFacade().deleteLider(codigoEmpleado))
+            return responseOut(codigoEmpleado,"",Response.Status.ACCEPTED);
+        else    
+            return responseOut(null,"",Response.Status.CONFLICT);
     }
 
     
@@ -139,8 +143,10 @@ public class LiderServices {
                               @FormParam("puesto") String puesto,
                               @FormParam("turno") String turno){
         System.out.println(codigoEmpleado+area+linea+nombre+turno);
-        ServiceFacadeLocator.getInstanceLiderFacade().updateLider(codigoEmpleado, linea, area, nombre, puesto, turno);
-        return responseOut("","",Response.Status.ACCEPTED);
+        if(ServiceFacadeLocator.getInstanceLiderFacade().updateLider(codigoEmpleado, linea, area, nombre, puesto, turno))
+            return responseOut(codigoEmpleado,"",Response.Status.ACCEPTED);
+        else
+            return responseOut(null,"",Response.Status.ACCEPTED);
     }    
     
     /***
