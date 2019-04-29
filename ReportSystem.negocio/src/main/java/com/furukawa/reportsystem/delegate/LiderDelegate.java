@@ -7,6 +7,7 @@ package com.furukawa.reportsystem.delegate;
 
 import com.furukawa.reportsystem.entidad.Empleado;
 import com.furukawa.reportsystem.entidad.Lider;
+import com.furukawa.reportsystem.integracion.ServiceFacadeLocator;
 import com.furukawa.reportsystem.integracion.ServiceLocator;
 import java.util.List;
 
@@ -52,25 +53,50 @@ public class LiderDelegate {
      * @param Area Area del lider
      * @param Linea Linea del lider
      * @param e Empleado Objeto
+     * @return
      */    
-    public void saveLider(String codigoEmpleado, String Area, int Linea, Empleado e){
+    public boolean saveLider(String codigoEmpleado, String Area, int Linea, Empleado e){
+        Lider buscar = ServiceFacadeLocator.getInstanceLiderFacade()
+                .getLiderByCodigoEmpleado(codigoEmpleado);
+        
+        if(buscar != null)
+            return false;     
+        
         Lider l = new Lider();
         l.setCodigoEmpleado(codigoEmpleado);
         l.setArea(Area);
         l.setLinea(Linea);
         l.setEmpleado(e);
-        ServiceLocator.getInstanceEmpleadoDAO().save(e);
-        ServiceLocator.getInstanceLiderDAO().save(l);
+        
+        
+        try{
+            ServiceLocator.getInstanceEmpleadoDAO().save(e);
+            ServiceLocator.getInstanceLiderDAO().save(l);            
+        }catch(Exception ex){
+            System.err.println("Error: "+ex);
+            return false;
+        }
+        return true;
     }   
     
     /***
      * 
      * @param codigoEmpleado de lider a eliminar
+     * @return
      */
-    public void deleteLider(String codigoEmpleado){
+    public boolean deleteLider(String codigoEmpleado){
         Lider l = ServiceLocator.getInstanceLiderDAO().findByOneParameterUnique(codigoEmpleado,
                 "codigoEmpleado");
-        ServiceLocator.getInstanceLiderDAO().delete(l);
+        if(l == null)
+            return false;
+        
+        try{
+            ServiceLocator.getInstanceLiderDAO().delete(l);            
+        }catch(Exception e){
+            System.err.println("Error: "+e);
+            return false;
+        }
+        return true;
     }
    
     
@@ -82,8 +108,9 @@ public class LiderDelegate {
      * @param Nombre
      * @param Puesto
      * @param Turno 
+     * @return
      */
-    public void updateLider(String Codigo_empleado, int Linea , String Area , String Nombre,
+    public boolean updateLider(String Codigo_empleado, int Linea , String Area , String Nombre,
             String Puesto , String Turno){
        
         Lider r = new Lider();
@@ -102,7 +129,14 @@ public class LiderDelegate {
         e.setCodigoEmpleado(Codigo_empleado);
           
         r.setEmpleado(e);
-        ServiceLocator.getInstanceEmpleadoDAO().update(e);
-        ServiceLocator.getInstanceLiderDAO().update(r); //Llamado a la base de datos      
+        
+        try{
+            ServiceLocator.getInstanceEmpleadoDAO().update(e);
+            ServiceLocator.getInstanceLiderDAO().update(r); //Llamado a la base de datos             
+        }catch(Exception ex){
+            System.err.println("Error: "+ex);
+            return false;
+        } 
+        return true;
      }      
 }
