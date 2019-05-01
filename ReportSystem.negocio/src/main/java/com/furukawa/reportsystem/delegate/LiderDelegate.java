@@ -63,4 +63,25 @@ public class LiderDelegate {
         ServiceLocator.getInstanceEmpleadoDAO().save(e);
         ServiceLocator.getInstanceLiderDAO().save(l);
     }    
+    
+     public void updateLider(String Codigo_empleado, int Linea , String Area , String Nombre , String Puesto , String Turno){
+       
+            Lider r = new Lider();
+            Empleado e = new Empleado();
+            
+            //LIDER
+            r.setCodigoEmpleado(Codigo_empleado);
+            r.setLinea(Linea);
+            r.setArea(Area);
+            
+            //EMPLEADO
+            e.setNombre(Nombre);
+            e.setPuesto(Puesto);
+            e.setFoto(null);
+            e.setTurno(Turno);
+            e.setCodigoEmpleado(Codigo_empleado);
+           
+            r.setEmpleado(e);
+            ServiceLocator.getInstanceLiderDAO().update(r); //Llamado a la base de datos      
+     } 
 }
