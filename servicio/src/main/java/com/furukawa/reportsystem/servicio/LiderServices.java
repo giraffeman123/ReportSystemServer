@@ -12,6 +12,7 @@ import com.furukawa.reportsystem.integracion.ServiceFacadeLocator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.List;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -68,23 +69,11 @@ public class LiderServices {
     }
     
     @POST
-    @Path("/deleteLiderByCodigo")
+    @Path("/deleteLiderByName")
     @Produces(MediaType.APPLICATION_JSON)
     public String deleteLiderByNombre(@FormParam("codigoEmpleado") String codigoEmpleado){
         System.out.println(codigoEmpleado);
         return responseOut(codigoEmpleado,"",Response.Status.ACCEPTED);
-    }
-    
-    @POST
-    @Path("/modificarLider")
-    public String updateLider(@FormParam("codigoEmpleado") String codigoEmpleado,
-                              @FormParam("area") String area, 
-                              @FormParam("linea") String linea,
-                              @FormParam("nombre") String nombre,
-                              @FormParam("puesto") String puesto,
-                              @FormParam("turno") String turno){
-        System.out.println(codigoEmpleado+area+linea+nombre+turno);
-        return responseOut("","",Response.Status.ACCEPTED);
     }
     
     /***
@@ -114,9 +103,51 @@ public class LiderServices {
         e.setTurno(turno);
         e.setFoto(null);
         System.out.println(area+linea);
-        ServiceFacadeLocator.getInstanceLiderFacade().saveLider(codigoEmpleado, area, linea, e);
-        return responseOut("","",Response.Status.ACCEPTED);
+        if(ServiceFacadeLocator.getInstanceLiderFacade().saveLider(codigoEmpleado, area, linea, e))
+            return responseOut(codigoEmpleado,"",Response.Status.ACCEPTED);
+        else
+            return responseOut(null,"",Response.Status.ACCEPTED);
     }
+    
+    /***
+     * 
+     * @param codigoEmpleado de lider a eliminar
+     * @return cdigo de empleado eliminado
+     */ 
+    @POST
+    @Path("/deleteLiderByCodigo")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String deleteLider(@FormParam("codigoEmpleado") String codigoEmpleado){
+        if(ServiceFacadeLocator.getInstanceLiderFacade().deleteLider(codigoEmpleado))
+            return responseOut(codigoEmpleado,"",Response.Status.ACCEPTED);
+        else    
+            return responseOut(null,"",Response.Status.CONFLICT);
+    }
+
+    
+    /***
+     * @param codigoEmpleado
+     * @param linea
+     * @param area
+     * @param nombre
+     * @param puesto
+     * @param turno
+     * @return 
+     */
+    @POST
+    @Path("/modificarLider")
+    public String updateLider(@FormParam("codigoEmpleado") String codigoEmpleado,
+                              @FormParam("linea") String linea, 
+                              @FormParam("area") String area,
+                              @FormParam("nombre") String nombre,
+                              @FormParam("puesto") String puesto,
+                              @FormParam("turno") String turno){
+        System.out.println(codigoEmpleado+area+linea+nombre+turno);
+        if(ServiceFacadeLocator.getInstanceLiderFacade().updateLider(codigoEmpleado, linea, area, nombre, puesto, turno))
+            return responseOut(codigoEmpleado,"",Response.Status.ACCEPTED);
+        else
+            return responseOut(null,"",Response.Status.ACCEPTED);
+    }    
     
     /***
      * 
