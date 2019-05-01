@@ -54,15 +54,36 @@ public class LiderFacade {
      * @param Area Area del lider
      * @param Linea Linea del lider
      * @param e Empleado Objeto
+     * @return
      */
-    public void saveLider(String codigoEmpleado, String Area, String Linea, Empleado e){
+    public boolean saveLider(String codigoEmpleado, String Area, String Linea, Empleado e){
         int Line = Integer.parseInt(Linea);
-        delegate.saveLider(codigoEmpleado, Area, Line, e);
+        return delegate.saveLider(codigoEmpleado, Area, Line, e);
     }    
     
-    public void updateLider(String Codigo_empleado, String Linea , String Area , String Nombre , String Puesto , String Turno){
-        int linea = Integer.parseInt(Linea); 
-        delegate.updateLider(Codigo_empleado, linea, Area, Nombre, Puesto, Turno);
+
+    /***
+     * 
+     * @param codigoEmpleado de lider a eliminar
+     * @return
+     */
+    public boolean deleteLider(String codigoEmpleado){
+        return delegate.deleteLider(codigoEmpleado);
     }
+
     
+    /***
+     * 
+     * @param Codigo_empleado
+     * @param Linea
+     * @param Area
+     * @param Nombre
+     * @param Puesto
+     * @param Turno 
+     * @return
+     */
+    public boolean updateLider(String Codigo_empleado, String Linea , String Area , String Nombre , String Puesto , String Turno){
+        int linea = Integer.parseInt(Linea); 
+        return delegate.updateLider(Codigo_empleado, linea, Area, Nombre, Puesto, Turno);
+    }        
 }
