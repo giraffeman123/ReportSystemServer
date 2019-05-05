@@ -5,6 +5,7 @@
  */
 
 
+import com.furukawa.reportsystem.entidad.CodigoDefecto;
 import com.furukawa.reportsystem.entidad.Lider;
 import com.furukawa.reportsystem.integracion.ServiceFacadeLocator;
 import java.util.List;
@@ -15,9 +16,15 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args){    
-        List<Lider> lista = ServiceFacadeLocator.getInstanceLiderFacade().getAllLideres();
-        for(Lider lider : lista){   System.out.println("id: "+lider.getEmpleado().getNombre());   }
-//      System.out.println("Modifico?"+ServiceFacadeLocator.
-//                getInstanceLiderFacade().actualizarLider("AAAA", "kevin", "Fusebox", 0, "Vespertino", null));
+//        List<Lider> lista = ServiceFacadeLocator.getInstanceLiderFacade().getAllLideres();
+//        for(Lider lider : lista){   System.out.println("id: "+lider.getEmpleado().getNombre());   }
+        
+        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectos();
+        System.out.println("");
+        
+        for(CodigoDefecto CodigoDefecto : lista){
+            System.out.println("Codigo Defecto: "+CodigoDefecto.getCodigoDefecto());   
+        }
+
     }
 }

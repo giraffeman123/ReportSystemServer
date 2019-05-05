@@ -5,6 +5,7 @@
  */
 package com.furukawa.reportsystem.integracion;
 
+import com.furukawa.reportsystem.facade.CodigoDefectoFacade;
 import com.furukawa.reportsystem.facade.LiderFacade;
 
 /**
@@ -13,7 +14,7 @@ import com.furukawa.reportsystem.facade.LiderFacade;
  */
 public class ServiceFacadeLocator {
     private static LiderFacade liderFacade;
-    
+    private static CodigoDefectoFacade CodigoDefectoFacade;
     /***
      * 
      * @return regresa la clase LiderFacade validando una sola instanciacion de esta
@@ -24,5 +25,12 @@ public class ServiceFacadeLocator {
             liderFacade = new LiderFacade();
             return liderFacade;
         }else{  return liderFacade; }
+    }
+    
+    public static CodigoDefectoFacade getInstanceCodigoDefectoFacade(){
+        if(CodigoDefectoFacade == null){
+            CodigoDefectoFacade = new CodigoDefectoFacade();
+            return CodigoDefectoFacade; 
+        }else{ return CodigoDefectoFacade; }
     }
 }
