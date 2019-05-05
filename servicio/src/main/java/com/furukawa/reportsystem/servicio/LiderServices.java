@@ -15,6 +15,7 @@ import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
@@ -56,7 +57,7 @@ public class LiderServices {
     }
     
     /***
-     * 
+     *  
      * @param nombre de lider(es) a buscar
      * @return todos los lideres encontrados en String con formato JSON ; null
      */
@@ -68,6 +69,7 @@ public class LiderServices {
         return responseOut(lista,"",Response.Status.ACCEPTED);
     }
     
+
     @POST
     @Path("/deleteLiderByName")
     @Produces(MediaType.APPLICATION_JSON)
@@ -163,5 +165,9 @@ public class LiderServices {
         Gson gson = b.create();
         String returnData = gson.toJson(lista);
         return returnData;
-    }      
+    }    
+    
+  
+    
+    
 }

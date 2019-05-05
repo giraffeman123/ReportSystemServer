@@ -67,6 +67,7 @@ public class LiderDelegate {
         l.setArea(Area);
         l.setLinea(Linea);
         l.setEmpleado(e);
+
         
         
         try{
@@ -139,4 +140,5 @@ public class LiderDelegate {
         } 
         return true;
      }      
+
 }
