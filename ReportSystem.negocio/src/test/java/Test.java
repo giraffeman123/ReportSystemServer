@@ -8,6 +8,7 @@
 import com.furukawa.reportsystem.entidad.CodigoDefecto;
 import com.furukawa.reportsystem.entidad.Lider;
 import com.furukawa.reportsystem.integracion.ServiceFacadeLocator;
+import com.furukawa.reportsystem.integracion.ServiceLocator;
 import java.util.List;
 
 /**
@@ -25,6 +26,16 @@ public class Test {
         for(CodigoDefecto CodigoDefecto : lista){
             System.out.println("Codigo Defecto: "+CodigoDefecto.getCodigoDefecto());   
         }
+        
+//        CodigoDefecto cd = new CodigoDefecto();
+//        
+//        cd.setCodigoDefecto("FLM6");
+//        cd.setArea("FuseBox");
+//        cd.setMaquina("Laser Machine");
+//        cd.setGravedad("Medio");
+//        cd.setDescripcion("Unknow");
+//
+//        ServiceLocator.getInstanceCodigoDefectoDAO().save(cd);            
 
     }
 }

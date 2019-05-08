@@ -20,10 +20,30 @@ public class CodigoDefectoDelegate {
     
     /***
      * 
-     * @return listado de lideres
+     * @return listado de CodigoDefectoes
      */
     public List<CodigoDefecto> getAllCodigoDefectos(){
         return ServiceLocator.getInstanceCodigoDefectoDAO().findAll();
     }
+    
+    public boolean saveCodigoDefecto(String codigoDefecto, String area, String maquina, String gravedad, String descripcion){
+        
+        CodigoDefecto cd = new CodigoDefecto();
+        
+        cd.getCodigoDefecto();
+        cd.getArea();
+        cd.getMaquina();
+        cd.getGravedad();
+        cd.getDescripcion();
+        
+        
+        try{
+            ServiceLocator.getInstanceCodigoDefectoDAO().save(cd);            
+        }catch(Exception ex){
+            System.err.println("Error: "+ex);
+            return false;
+        }
+        return true;
+    }   
     
 }

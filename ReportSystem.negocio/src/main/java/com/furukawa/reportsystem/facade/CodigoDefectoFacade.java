@@ -22,10 +22,14 @@ public class CodigoDefectoFacade {
     
     /***
      * 
-     * @return listado de lideres
+     * @return listado de Codigos de defectod
      */
     public List<CodigoDefecto> getAllCodigoDefectos(){
         return delegate.getAllCodigoDefectos();
     }
     
+    
+    public boolean saveCodigoDefecto(String codigoDefecto, String area, String maquina, String gravedad, String descripcion){
+        return delegate.saveCodigoDefecto(codigoDefecto, area, maquina, gravedad, descripcion);
+    }    
 }
