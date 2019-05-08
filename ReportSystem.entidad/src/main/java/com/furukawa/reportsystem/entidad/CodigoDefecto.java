@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "CodigoDefecto.findByDescripcion", query = "SELECT c FROM CodigoDefecto c WHERE c.descripcion = :descripcion")
     , @NamedQuery(name = "CodigoDefecto.findByCodigoDefecto", query = "SELECT c FROM CodigoDefecto c WHERE c.codigoDefecto = :codigoDefecto")})
 public class CodigoDefecto implements Serializable {
+    
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
