@@ -6,7 +6,6 @@
 package com.furukawa.reportsystem.delegate;
 
 import com.furukawa.reportsystem.entidad.CodigoDefecto;
-import com.furukawa.reportsystem.integracion.ServiceFacadeLocator;
 import com.furukawa.reportsystem.integracion.ServiceLocator;
 import java.util.List;
 /**
@@ -25,5 +24,24 @@ public class CodigoDefectoDelegate {
     public List<CodigoDefecto> getAllCodigoDefectos(){
         return ServiceLocator.getInstanceCodigoDefectoDAO().findAll();
     }
+    
+    /**
+     * @param area
+     *  return Codigo de Defecto por busqueda de area
+     */
+    public CodigoDefecto getCodigoDefectoByArea(String area){
+        return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameterUnique(area,"area");
+    }
+    
+    /**
+     * @param area
+     *  return Codigo de Defecto por busqueda de maquina
+     */
+    public CodigoDefecto getCodigoDefectoByMaquina(String maquina){
+        return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameterUnique(maquina,"area");
+    }
+    
+    
+    
     
 }

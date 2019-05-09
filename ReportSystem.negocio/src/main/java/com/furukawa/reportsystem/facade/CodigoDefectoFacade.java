@@ -28,4 +28,12 @@ public class CodigoDefectoFacade {
         return delegate.getAllCodigoDefectos();
     }
     
+    /***
+     * @param CodigoDefecto
+     *  return Area Encontrada
+     */
+    
+    public CodigoDefecto getCodigoDefectoByArea(String area){
+     return delegate.getCodigoDefectoByArea(area);
+    }    
 }

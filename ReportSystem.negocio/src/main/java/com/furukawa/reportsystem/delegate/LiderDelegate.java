@@ -112,8 +112,7 @@ public class LiderDelegate {
      * @return
      */
     public boolean updateLider(String Codigo_empleado, int Linea , String Area , String Nombre,
-            String Puesto , String Turno){
-       
+            String Puesto , String Turno){       
         Lider r = new Lider();
         Empleado e = new Empleado();
            
