@@ -31,20 +31,36 @@ public class CodigoDefectoServices {
 
     /***
      * @GET es el tipo de Peticion a la cual el metodo se convertira
-     * @PATH es el url bajo el cual se llamara al metodo getAllCodigoDefectoes desde el navegador, en este caso /CodigoDefecto
+     * @PATH es el url bajo el cual se llamara al metodo getAllCodigoDefectos desde el navegador, en este caso /CodigoDefecto
      * @Produces es el tipo de formato MIME bajo el cual se dara la respuesta, en este caso JSON
-     * @return todos los CodigoDefectoes encontrados en String con formato JSON ; null
+     * @return todos los CodigoDefectos encontrados en String con formato JSON ; null
      */    
     @GET
     @Path("/allCodigoDefectos")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAllCodigoDefectoes() {
+    public String getAllCodigoDefectos() {
         List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectos();
         return responseOut(lista, "", Response.Status.ACCEPTED);
     }
     
  
-
+    @POST
+    @Path("/nuevoCodigoDefecto")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String saveCodigoDefecto(
+                            
+                            @FormParam("area") String area, 
+                            @FormParam("maquina") String maquina,
+                            @FormParam("gravedad") String gravedad, 
+                            @FormParam("descripcion") String descripcion){
+        
+        if(ServiceFacadeLocator.getInstanceCodigoDefectoFacade().saveCodigoDefecto(area, maquina, gravedad, descripcion))
+            return responseOut(area,"",Response.Status.ACCEPTED);
+        else
+            return responseOut(null,"",Response.Status.ACCEPTED);
+    }
+    
+    
      /* 
      * @param lista el objeto que se va parsear a JSON
      * @param mensaje un mensaje de texto para el cliente
