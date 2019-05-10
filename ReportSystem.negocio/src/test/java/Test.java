@@ -9,10 +9,7 @@ import com.furukawa.reportsystem.entidad.CodigoDefecto;
 import com.furukawa.reportsystem.entidad.Lider;
 import com.furukawa.reportsystem.integracion.ServiceFacadeLocator;
 import com.furukawa.reportsystem.integracion.ServiceLocator;
-<<<<<<< HEAD
-=======
 import java.util.ArrayList;
->>>>>>> master
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -25,7 +22,6 @@ public class Test {
 //        List<Lider> lista = ServiceFacadeLocator.getInstanceLiderFacade().getAllLideres();
 //        for(Lider lider : lista){   System.out.println("id: "+lider.getEmpleado().getNombre());   }
         
-<<<<<<< HEAD
 //        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectos();
 //        System.out.println("");
 //        
@@ -35,7 +31,7 @@ public class Test {
 //      
         Test test = new Test();
         System.out.println(test.makeCodigoElliot("FuseBox", "Laser Machine"));
-=======
+
 //------------------------------------------------------------------------------------------------------------------
         List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectos();
         System.out.println("");
@@ -126,7 +122,6 @@ public class Test {
 //        
 //        System.out.println("----------");
 //        System.out.println(ConcatenadoNo);
->>>>>>> master
 
     }
     
