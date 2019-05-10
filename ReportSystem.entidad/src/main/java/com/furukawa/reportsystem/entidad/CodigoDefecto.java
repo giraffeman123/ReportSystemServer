@@ -5,16 +5,15 @@
  */
 package com.furukawa.reportsystem.entidad;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -28,30 +27,39 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "CodigoDefecto.findAll", query = "SELECT c FROM CodigoDefecto c")
     , @NamedQuery(name = "CodigoDefecto.findByArea", query = "SELECT c FROM CodigoDefecto c WHERE c.area = :area")
+    , @NamedQuery(name = "CodigoDefecto.findByMaquina", query = "SELECT c FROM CodigoDefecto c WHERE c.maquina = :maquina")
     , @NamedQuery(name = "CodigoDefecto.findByGravedad", query = "SELECT c FROM CodigoDefecto c WHERE c.gravedad = :gravedad")
     , @NamedQuery(name = "CodigoDefecto.findByDescripcion", query = "SELECT c FROM CodigoDefecto c WHERE c.descripcion = :descripcion")
     , @NamedQuery(name = "CodigoDefecto.findByCodigoDefecto", query = "SELECT c FROM CodigoDefecto c WHERE c.codigoDefecto = :codigoDefecto")})
 public class CodigoDefecto implements Serializable {
+    
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
+    @Expose(serialize = true)
     @Column(name = "area")
     private String area;
     @Basic(optional = false)
+    @Expose(serialize = true)
+    @Column(name = "maquina")
+    private String maquina;
+    @Basic(optional = false)
+    @Expose(serialize = true)
     @Column(name = "gravedad")
     private String gravedad;
     @Basic(optional = false)
+    @Expose(serialize = true)
     @Column(name = "descripcion")
     private String descripcion;
     @Id
     @Basic(optional = false)
+    @Expose(serialize = true)
     @Column(name = "codigoDefecto")
     private String codigoDefecto;
     @Lob
+    @Expose(serialize = true)
     @Column(name = "fotografia")
     private byte[] fotografia;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "codigoDefecto1")
-    private Defecto defecto;
 
     public CodigoDefecto() {
     }
@@ -60,9 +68,10 @@ public class CodigoDefecto implements Serializable {
         this.codigoDefecto = codigoDefecto;
     }
 
-    public CodigoDefecto(String codigoDefecto, String area, String gravedad, String descripcion) {
+    public CodigoDefecto(String codigoDefecto, String area, String maquina, String gravedad, String descripcion) {
         this.codigoDefecto = codigoDefecto;
         this.area = area;
+        this.maquina = maquina;
         this.gravedad = gravedad;
         this.descripcion = descripcion;
     }
@@ -73,6 +82,14 @@ public class CodigoDefecto implements Serializable {
 
     public void setArea(String area) {
         this.area = area;
+    }
+
+    public String getMaquina() {
+        return maquina;
+    }
+
+    public void setMaquina(String maquina) {
+        this.maquina = maquina;
     }
 
     public String getGravedad() {
@@ -105,14 +122,6 @@ public class CodigoDefecto implements Serializable {
 
     public void setFotografia(byte[] fotografia) {
         this.fotografia = fotografia;
-    }
-
-    public Defecto getDefecto() {
-        return defecto;
-    }
-
-    public void setDefecto(Defecto defecto) {
-        this.defecto = defecto;
     }
 
     @Override
