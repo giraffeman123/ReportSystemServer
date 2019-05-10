@@ -5,6 +5,7 @@
  */
 package com.furukawa.reportsystem.entidad;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -31,25 +32,32 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "CodigoDefecto.findByDescripcion", query = "SELECT c FROM CodigoDefecto c WHERE c.descripcion = :descripcion")
     , @NamedQuery(name = "CodigoDefecto.findByCodigoDefecto", query = "SELECT c FROM CodigoDefecto c WHERE c.codigoDefecto = :codigoDefecto")})
 public class CodigoDefecto implements Serializable {
+    
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
+    @Expose(serialize = true)
     @Column(name = "area")
     private String area;
     @Basic(optional = false)
+    @Expose(serialize = true)
     @Column(name = "maquina")
     private String maquina;
     @Basic(optional = false)
+    @Expose(serialize = true)
     @Column(name = "gravedad")
     private String gravedad;
     @Basic(optional = false)
+    @Expose(serialize = true)
     @Column(name = "descripcion")
     private String descripcion;
     @Id
     @Basic(optional = false)
+    @Expose(serialize = true)
     @Column(name = "codigoDefecto")
     private String codigoDefecto;
     @Lob
+    @Expose(serialize = true)
     @Column(name = "fotografia")
     private byte[] fotografia;
 

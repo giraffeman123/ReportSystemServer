@@ -7,6 +7,7 @@ package com.furukawa.reportsystem.servicio;
 
 import com.furukawa.reportsystem.common.HibernateProxyTypeAdapter;
 import com.furukawa.reportsystem.entidad.Lider;
+import com.furukawa.reportsystem.entidad.CodigoDefecto;
 import com.furukawa.reportsystem.integracion.ServiceFacadeLocator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -38,6 +39,19 @@ public class Services {
         /* Esta linea de codigo es el problema que estoy solucionando ahora. */
         /* El problema es: como parsear la clase lider en formato JSON */
         List<Lider> lista = ServiceFacadeLocator.getInstanceLiderFacade().getAllLideres();
+        
+        return reponseOut(lista, "", Response.Status.CREATED);
+
+    }
+    
+    @GET
+    @Path("/codigoDefecto")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllCodigoDefectos() {
+
+        /* Esta linea de codigo es el problema que estoy solucionando ahora. */
+        /* El problema es: como parsear la clase lider en formato JSON */
+        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectos();
         
         return reponseOut(lista, "", Response.Status.CREATED);
 
