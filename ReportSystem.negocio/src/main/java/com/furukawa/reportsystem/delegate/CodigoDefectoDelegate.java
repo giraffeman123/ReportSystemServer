@@ -36,7 +36,8 @@ public class CodigoDefectoDelegate {
      * @param descripcion
      * @return 
      */
-    public boolean saveCodigoDefecto(String codigo, String area, String maquina, String gravedad, String descripcion){
+    public boolean saveCodigoDefecto(String codigo, String area, String maquina, String gravedad,
+                                        String descripcion){
         
         CodigoDefecto cod = new CodigoDefecto();
 //        String codi = ObtenerCodigoDefecto(area,maquina);
@@ -60,23 +61,26 @@ public class CodigoDefectoDelegate {
     
     /***
      * 
-     * @param area
-     * @param maquina
+     * @param codigo
      * @param gravedad
      * @param descripcion
      * @return verdadero si se actualizo ; falso en caso contrario
      */
-    public boolean updateCodigoDefecto(String area, String maquina, String gravedad, String descripcion){
-
-        CodigoDefecto codigoDefecto = new CodigoDefecto();
+    public boolean updateCodigoDefecto(String codigo, String gravedad
+                                        , String descripcion){
+        //se verifica si existe un codigoDefecto a modificar         
+        CodigoDefecto codigoDefecto = ServiceLocator.getInstanceCodigoDefectoDAO()
+                .findByOneParameterUnique(codigo, "codigoDefecto");
         
-        codigoDefecto.setCodigoDefecto(makeCodigoElliot(area,maquina));
-        codigoDefecto.setArea(area);
-        codigoDefecto.setMaquina(maquina);
+        if(codigoDefecto == null)
+            return false;
+        
+        codigoDefecto.setCodigoDefecto(codigo);
+        //codigoDefecto.setArea(area);
+        //codigoDefecto.setMaquina(maquina);
         codigoDefecto.setGravedad(gravedad);
         codigoDefecto.setDescripcion(descripcion);
         codigoDefecto.setFotografia(null);
-        
         
         try{
             ServiceLocator.getInstanceCodigoDefectoDAO().update(codigoDefecto);
@@ -87,36 +91,5 @@ public class CodigoDefectoDelegate {
         
         return true;
     }
-    
-    /***
-     * 
-     * @param area
-     * @param maquina
-     * @return un codigo con la inicial de area y las primeras inciales de maquina
-     */
-    public String makeCodigoElliot(String area, String maquina){
-        int contador = 0;
-        
-        // obtiene el primer caracter de area para hacer el codigo
-        String codigo = "" + area.charAt(0);
-        
-        // separa la cadena maquina por espacios,& o y y realiza un foreach por cada palabra
-        // obteniendo el primer caracter para hacer el codigo
-        String[] palabras = maquina.split(" |&");
-        for(String palabra : palabras){
-            codigo += palabra.charAt(0);
-        }
-        
-        // se obtienen todos los codigos de defecto con la misma maquina e area y se cuentan para obtener 
-        // el numero que sera el codigo
-        List<CodigoDefecto> codigos = ServiceLocator.getInstanceCodigoDefectoDAO().findAll();
-        for(CodigoDefecto codigoDf : codigos){
-            if(codigoDf.getMaquina().equalsIgnoreCase(maquina) && codigoDf.getArea().equalsIgnoreCase(area))
-                contador++;
-        }
-        
-        contador++;
-        codigo += contador;
-        return codigo;
-    }
+      
 }
