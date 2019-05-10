@@ -33,14 +33,44 @@ public class CodigoDefectoFacade {
     
 
     /***
-     * @param CodigoDefecto
+     * @param area
      *  return Area Encontrada
+     * @return 
+     */
+    public List<CodigoDefecto> getAllCodigoDefectoByArea(String area){
+     return delegate.getAllCodigoDefectoByArea(area);
+    }
+       
+    /**
+     * @param maquina
+     * return Maquina Encontrada 
+     */
+    public List <CodigoDefecto> getAllCodigoDefectoByMaquina(String maquina){
+     return delegate.getAllCodigoDefectoByMaquina(maquina);
+    }
+    
+    /**
+     * @param Gravedad
+     * return Gravedad encontrada
      */
     
-    public CodigoDefecto getCodigoDefectoByArea(String area){
-     return delegate.getCodigoDefectoByArea(area);
-    }    
+    public List<CodigoDefecto> getAllCodigoDefectoByGravedad(String gravedad){
+     return delegate.getAllCodigoDefectoByGravedad(gravedad);
+    }
+    
+    /**
+     * @param CodigoDefecto
+     * return CodigoDefecto encontrada
+     */
+    public List<CodigoDefecto> getAllCodigoDefectoByCodigoDefecto(String codigodefecto){
+    return delegate.getAllCodigoDefectoByCodigoDefecto(codigodefecto);
+    }
 
+  
+    
+    
+    
+    
     
     public boolean saveCodigoDefecto(String area, String maquina, String gravedad, String descripcion){
         String codigo = ObtenerCodigoDefecto(area,maquina);

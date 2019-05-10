@@ -60,20 +60,37 @@ public class CodigoDefectoDelegate {
     /**
      * @param area
      *  return Codigo de Defecto por busqueda de area
+     * @return 
      */
-    public CodigoDefecto getCodigoDefectoByArea(String area){
-        return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameterUnique(area,"area");
+    public List<CodigoDefecto> getAllCodigoDefectoByArea(String area){ 
+        return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameter(area,"area");
+    }
+    /**
+     * @param maquina 
+     *  return Codigo de Defecto por busqueda de maquina
+     */
+    public List<CodigoDefecto> getAllCodigoDefectoByMaquina(String maquina){
+        return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameter(maquina,"maquina");
+    }
+
+    
+    /**
+     * @param gravedad
+     * return Codigo de defecto por busqueda de gravedad
+     */
+    public List <CodigoDefecto> getAllCodigoDefectoByGravedad(String gravedad) {
+        return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameter(gravedad,"gravedad");
     }
     
     /**
-     * @param area
-     *  return Codigo de Defecto por busqueda de maquina
+     * @param CodigoDefecto
      */
-    public CodigoDefecto getCodigoDefectoByMaquina(String maquina){
-        return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameterUnique(maquina,"area");
+  
+    public List<CodigoDefecto> getAllCodigoDefectoByCodigoDefecto(String codigodefecto){
+      return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameter(codigodefecto,"codigodefecto");
     }
     
     
-    
+   
     
 }

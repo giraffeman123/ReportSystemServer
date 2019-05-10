@@ -43,6 +43,52 @@ public class CodigoDefectoServices {
         return responseOut(lista, "", Response.Status.ACCEPTED);
     }
     
+    
+    @GET
+    @Path("/codigoDefectosByArea/{area}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllCodigoDefetosByArea(@PathParam("area")String area){
+    List <CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectoByArea(area);
+    return responseOut(lista,"", Response.Status.ACCEPTED);
+    }
+    
+    @GET
+    @Path("/codigoDefectosByMaquina/{maquina}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllCodigoDefectosByMaquina(@PathParam("maquina")String maquina){
+    List <CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectoByMaquina(maquina);
+    return responseOut(lista,"", Response.Status.ACCEPTED);
+    }
+    /***
+     * 
+     * 
+     */
+    
+    @GET
+    @Path("/codigoDefectosByGravedad/{gravedad}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllCodigoDefectosByGravedad(@PathParam("gravedad")String gravedad){
+    List <CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectoByGravedad(gravedad);
+    return responseOut(lista,"", Response.Status.ACCEPTED);
+    }
+    
+    /**
+     *
+     */
+    @GET
+    @Path("/codigoDefectosByCodigoDefecto/{codigodefectos}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllCodigoDefectosByCodigoDefectos(@PathParam("codigodefecto")String codigodefecto){
+    List <CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectoByCodigoDefecto(codigodefecto);
+    return responseOut(lista,"", Response.Status.ACCEPTED);
+    }
+    
+    
+    
+    
+    
+    
+    
  
     @POST
     @Path("/nuevoCodigoDefecto")
