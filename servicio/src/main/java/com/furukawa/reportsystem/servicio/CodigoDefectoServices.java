@@ -44,6 +44,14 @@ public class CodigoDefectoServices {
     }
     
  
+    /***
+     * 
+     * @param area
+     * @param maquina
+     * @param gravedad
+     * @param descripcion
+     * @return 
+     */
     @POST
     @Path("/nuevoCodigoDefecto")
     @Produces(MediaType.APPLICATION_JSON)
@@ -54,8 +62,29 @@ public class CodigoDefectoServices {
                             @FormParam("gravedad") String gravedad, 
                             @FormParam("descripcion") String descripcion){
         
-        if(ServiceFacadeLocator.getInstanceCodigoDefectoFacade().saveCodigoDefecto(area, maquina, gravedad, descripcion))
+        if(ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
+                .saveCodigoDefecto(area, maquina, gravedad, descripcion))
             return responseOut(area,"",Response.Status.ACCEPTED);
+        else
+            return responseOut(null,"",Response.Status.ACCEPTED);
+    }
+    
+    /***
+     * 
+     * @param codigo
+     * @param gravedad
+     * @param descripcion
+     * @return 
+     */
+    @POST
+    @Path("/modificarCodigoDefecto")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateCodigoDefecto(@FormParam("codigo") String codigo,
+                            @FormParam("gravedad") String gravedad, 
+                            @FormParam("descripcion") String descripcion){
+        if(ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
+                .updateCodigoDefecto(codigo, gravedad, descripcion))
+            return responseOut(codigo,"",Response.Status.ACCEPTED);
         else
             return responseOut(null,"",Response.Status.ACCEPTED);
     }
