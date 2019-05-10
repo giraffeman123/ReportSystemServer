@@ -31,6 +31,18 @@ public class CodigoDefectoFacade {
         return delegate.getAllCodigoDefectos();
     }
     
+<<<<<<< HEAD
+    /***
+     * 
+     * @param area
+     * @param maquina
+     * @param gravedad
+     * @param descripcion
+     * @return verdadero si se actualizo el codigo defecto ; falso en caso contrario
+     */    
+    public Boolean updateCodigoDefecto(String area, String maquina, String gravedad, String descripcion){
+        return delegate.updateCodigoDefecto(area, maquina, gravedad, descripcion);
+=======
     
     public boolean saveCodigoDefecto(String area, String maquina, String gravedad, String descripcion){
         String codigo = ObtenerCodigoDefecto(area,maquina);
@@ -105,5 +117,6 @@ public class CodigoDefectoFacade {
             System.out.println(ConcatenadoNo);
         
     return ConcatenadoNo;
+>>>>>>> master
     }
 }

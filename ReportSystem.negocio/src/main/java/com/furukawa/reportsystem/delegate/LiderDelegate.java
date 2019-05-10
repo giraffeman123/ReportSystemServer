@@ -56,11 +56,14 @@ public class LiderDelegate {
      * @return
      */    
     public boolean saveLider(String codigoEmpleado, String Area, int Linea, Empleado e){
+        //se verifica si se eligio un codigoEmpleado ya existente
         Lider buscar = ServiceFacadeLocator.getInstanceLiderFacade()
                 .getLiderByCodigoEmpleado(codigoEmpleado);
         
         if(buscar != null)
             return false;     
+
+
         
         Lider l = new Lider();
         l.setCodigoEmpleado(codigoEmpleado);
@@ -68,8 +71,6 @@ public class LiderDelegate {
         l.setLinea(Linea);
         l.setEmpleado(e);
 
-        
-        
         try{
             ServiceLocator.getInstanceEmpleadoDAO().save(e);
             ServiceLocator.getInstanceLiderDAO().save(l);            
@@ -86,6 +87,7 @@ public class LiderDelegate {
      * @return
      */
     public boolean deleteLider(String codigoEmpleado){
+        //se verifica si existe un lider         
         Lider l = ServiceLocator.getInstanceLiderDAO().findByOneParameterUnique(codigoEmpleado,
                 "codigoEmpleado");
         if(l == null)
