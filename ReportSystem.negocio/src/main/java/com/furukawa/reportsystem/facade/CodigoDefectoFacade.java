@@ -28,4 +28,15 @@ public class CodigoDefectoFacade {
         return delegate.getAllCodigoDefectos();
     }
     
+    /***
+     * 
+     * @param area
+     * @param maquina
+     * @param gravedad
+     * @param descripcion
+     * @return verdadero si se actualizo el codigo defecto ; falso en caso contrario
+     */    
+    public Boolean updateCodigoDefecto(String area, String maquina, String gravedad, String descripcion){
+        return delegate.updateCodigoDefecto(area, maquina, gravedad, descripcion);
+    }
 }
