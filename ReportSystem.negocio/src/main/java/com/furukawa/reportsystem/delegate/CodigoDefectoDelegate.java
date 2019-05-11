@@ -27,6 +27,16 @@ public class CodigoDefectoDelegate {
     public List<CodigoDefecto> getAllCodigoDefectos(){
         return ServiceLocator.getInstanceCodigoDefectoDAO().findAll();
     }
+    
+    /***
+     * 
+     * @param codigodefecto
+     * @return 
+     */
+    public CodigoDefecto getCodigoDefectoByCodigoDefecto(String codigodefecto){
+      return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameterUnique(codigodefecto,"codigoDefecto");
+    }    
+    
     /***
      * 
      * @param codigo

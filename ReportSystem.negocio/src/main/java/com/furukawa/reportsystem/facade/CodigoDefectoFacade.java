@@ -34,6 +34,15 @@ public class CodigoDefectoFacade {
     
     /***
      * 
+     * @param codigodefecto
+     * @return 
+     */
+    public CodigoDefecto getCodigoDefectoByCodigoDefecto(String codigodefecto){
+        return delegate.getCodigoDefectoByCodigoDefecto(codigodefecto);
+    }    
+    
+    /***
+     * 
      * @param codigo
      * @param gravedad
      * @param descripcion

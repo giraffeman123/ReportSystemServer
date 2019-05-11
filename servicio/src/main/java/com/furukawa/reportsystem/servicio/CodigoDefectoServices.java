@@ -43,6 +43,20 @@ public class CodigoDefectoServices {
         return responseOut(lista, "", Response.Status.ACCEPTED);
     }
     
+    /***
+     * 
+     * @param codigodefecto
+     * @return 
+     */
+    @GET
+    @Path("/codigoDefectoByCodigoDefecto/{codigoDefecto}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getCodigoDefectoByCodigoDefectos(@PathParam("codigoDefecto") String codigodefecto){
+        CodigoDefecto codigo = ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
+                .getCodigoDefectoByCodigoDefecto(codigodefecto);
+        return responseOut(codigo,"", Response.Status.ACCEPTED);
+    }    
+    
  
     /***
      * 
