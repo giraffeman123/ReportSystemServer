@@ -72,8 +72,7 @@ public class CodigoDefectoDelegate {
     public List<CodigoDefecto> getAllCodigoDefectoByMaquina(String maquina){
         return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameter(maquina,"maquina");
     }
-
-    
+   
     /**
      * @param gravedad
      * return Codigo de defecto por busqueda de gravedad
@@ -86,8 +85,8 @@ public class CodigoDefectoDelegate {
      * @param CodigoDefecto
      */
   
-    public List<CodigoDefecto> getAllCodigoDefectoByCodigoDefecto(String codigodefecto){
-      return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameter(codigodefecto,"codigodefecto");
+    public CodigoDefecto getCodigoDefectoByCodigoDefecto(String codigoDefecto){
+       return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameterUnique(codigoDefecto, "codigoDefecto");
     }
     
     

@@ -62,8 +62,8 @@ public class CodigoDefectoFacade {
      * @param CodigoDefecto
      * return CodigoDefecto encontrada
      */
-    public List<CodigoDefecto> getAllCodigoDefectoByCodigoDefecto(String codigodefecto){
-    return delegate.getAllCodigoDefectoByCodigoDefecto(codigodefecto);
+    public CodigoDefecto getCodigoDefectoByCodigoDefecto(String codigoDefecto){
+    return delegate.getCodigoDefectoByCodigoDefecto(codigoDefecto);
     }
 
   

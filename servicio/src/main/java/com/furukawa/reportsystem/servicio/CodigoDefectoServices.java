@@ -45,7 +45,7 @@ public class CodigoDefectoServices {
     
     
     @GET
-    @Path("/codigoDefectosByArea/{area}")
+    @Path("/allcodigoDefectosByArea/{area}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getAllCodigoDefetosByArea(@PathParam("area")String area){
     List <CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectoByArea(area);
@@ -53,19 +53,20 @@ public class CodigoDefectoServices {
     }
     
     @GET
-    @Path("/codigoDefectosByMaquina/{maquina}")
+    @Path("/allcodigoDefectosByMaquina/{maquina}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getAllCodigoDefectosByMaquina(@PathParam("maquina")String maquina){
     List <CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectoByMaquina(maquina);
     return responseOut(lista,"", Response.Status.ACCEPTED);
     }
+    
     /***
      * 
      * 
      */
     
     @GET
-    @Path("/codigoDefectosByGravedad/{gravedad}")
+    @Path("/allcodigoDefectosByGravedad/{gravedad}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getAllCodigoDefectosByGravedad(@PathParam("gravedad")String gravedad){
     List <CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectoByGravedad(gravedad);
@@ -75,17 +76,14 @@ public class CodigoDefectoServices {
     /**
      *
      */
+    
     @GET
-    @Path("/codigoDefectosByCodigoDefecto/{codigodefectos}")
+    @Path("/codigoDefectosByCodigoDefecto/{codigoDefecto}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAllCodigoDefectosByCodigoDefectos(@PathParam("codigodefecto")String codigodefecto){
-    List <CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectoByCodigoDefecto(codigodefecto);
-    return responseOut(lista,"", Response.Status.ACCEPTED);
-    }
-    
-    
-    
-    
+    public String getCodigoDefectosByCodigoDefecto(@PathParam("codigoDefecto")String codigoDefecto){
+    CodigoDefecto codigodefecto = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getCodigoDefectoByCodigoDefecto(codigoDefecto);
+    return responseOut(codigodefecto,"", Response.Status.ACCEPTED);
+    } 
     
     
     
