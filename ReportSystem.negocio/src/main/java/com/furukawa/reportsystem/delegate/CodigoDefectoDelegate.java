@@ -35,6 +35,34 @@ public class CodigoDefectoDelegate {
      */
     public CodigoDefecto getCodigoDefectoByCodigoDefecto(String codigodefecto){
       return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameterUnique(codigodefecto,"codigoDefecto");
+    }   
+    
+    /**
+     * @param area
+     *  return Codigo de Defecto por busqueda de area
+     * @return 
+     */
+    public List<CodigoDefecto> getAllCodigoDefectoByArea(String area){ 
+        return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameter(area,"area");
+    }
+    
+    /***
+     * 
+     * @param maquina
+     * @return 
+     */
+    public List<CodigoDefecto> getAllCodigoDefectoByMaquina(String maquina){
+        return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameter(maquina,"maquina");
+    }
+   
+
+    /***
+     * 
+     * @param gravedad
+     * @return 
+     */
+    public List<CodigoDefecto> getAllCodigoDefectoByGravedad(String gravedad) {
+        return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameter(gravedad,"gravedad");
     }    
     
     /***
@@ -115,7 +143,7 @@ public class CodigoDefectoDelegate {
         
         try{
             ServiceLocator.getInstanceCodigoDefectoDAO().delete(cod);
-            remakeCodigosAfterDelete(cod.getArea(),cod.getMaquina());
+            //remakeCodigosAfterDelete(cod.getArea(),cod.getMaquina());
         }catch(Exception ex){
             System.err.println("Error: "+ex);
             return false;

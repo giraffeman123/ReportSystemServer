@@ -57,7 +57,48 @@ public class CodigoDefectoServices {
         return responseOut(codigo,"", Response.Status.ACCEPTED);
     }    
     
- 
+    /***
+     * 
+     * @param area
+     * @return 
+     */
+    @GET
+    @Path("/allcodigoDefectosByArea/{area}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllCodigoDefetosByArea(@PathParam("area")String area){
+        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
+                .getAllCodigoDefectoByArea(area);
+        return responseOut(lista,"", Response.Status.ACCEPTED);
+    }
+    
+    /***
+     * 
+     * @param maquina
+     * @return 
+     */
+    @GET
+    @Path("/allcodigoDefectosByMaquina/{maquina}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllCodigoDefectosByMaquina(@PathParam("maquina")String maquina){
+        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
+                .getAllCodigoDefectoByMaquina(maquina);
+        return responseOut(lista,"", Response.Status.ACCEPTED);
+    }
+    
+    /***
+     * 
+     * @param gravedad
+     * @return 
+     */
+    @GET
+    @Path("/allcodigoDefectosByGravedad/{gravedad}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllCodigoDefectosByGravedad(@PathParam("gravedad")String gravedad){
+        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
+                .getAllCodigoDefectoByGravedad(gravedad);
+        return responseOut(lista,"", Response.Status.ACCEPTED);
+    }
+    
     /***
      * 
      * @param area
