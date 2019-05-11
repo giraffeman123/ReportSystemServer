@@ -8,6 +8,7 @@ package com.furukawa.reportsystem.servicio;
 import com.furukawa.reportsystem.common.HibernateProxyTypeAdapter;
 import com.furukawa.reportsystem.entidad.CodigoDefecto;
 import com.furukawa.reportsystem.integracion.ServiceFacadeLocator;
+import com.furukawa.reportsystem.integracion.ServiceLocator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.List;
@@ -77,6 +78,14 @@ public class CodigoDefectoServices {
     }    
     
   
-    
+    @POST
+    @Path("/eliminarCodigoDefecto")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String deleteCodigoDefecto(@FormParam("codigo") String codigo){
+        if(ServiceFacadeLocator.getInstanceCodigoDefectoFacade().deleteCodigoDefecto(codigo))
+            return responseOut(codigo,"",Response.Status.ACCEPTED);
+        else
+            return responseOut(null,"",Response.Status.CONFLICT);
+    }
     
 }

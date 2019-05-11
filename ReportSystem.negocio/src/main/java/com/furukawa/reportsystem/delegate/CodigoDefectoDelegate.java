@@ -57,5 +57,22 @@ public class CodigoDefectoDelegate {
         return true;
     }   
     
-    
+    /***
+     * 
+     * @param codigo
+     */
+    public boolean deleteCodigoDefecto(String codigo){
+        CodigoDefecto cod = ServiceLocator.getInstanceCodigoDefectoDAO()
+                .findByOneParameterUnique(codigo, "codigo");
+        if(cod == null)
+            return false;
+        
+        try{
+            ServiceLocator.getInstanceCodigoDefectoDAO().delete(cod);
+        }catch(Exception ex){
+            System.err.println("Error: "+ex);
+            return false;
+        }
+        return true;
+    }
 }

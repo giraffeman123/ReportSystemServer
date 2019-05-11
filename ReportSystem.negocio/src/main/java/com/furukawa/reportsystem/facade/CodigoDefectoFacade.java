@@ -106,4 +106,13 @@ public class CodigoDefectoFacade {
         
     return ConcatenadoNo;
     }
+    
+    /***
+     * 
+     * @param codigo
+     * @return
+     */
+    public boolean deleteCodigoDefecto(String codigo){
+        return delegate.deleteCodigoDefecto(codigo);
+    }
 }
