@@ -70,7 +70,6 @@ public class CodigoDefectoServices {
     @Path("/nuevoCodigoDefecto")
     @Produces(MediaType.APPLICATION_JSON)
     public String saveCodigoDefecto(
-                            
                             @FormParam("area") String area, 
                             @FormParam("maquina") String maquina,
                             @FormParam("gravedad") String gravedad, 
@@ -93,7 +92,7 @@ public class CodigoDefectoServices {
     @POST
     @Path("/modificarCodigoDefecto")
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateCodigoDefecto(@FormParam("codigo") String codigo,
+    public String updateCodigoDefecto(@FormParam("codigoDefecto") String codigo,
                             @FormParam("gravedad") String gravedad, 
                             @FormParam("descripcion") String descripcion){
         if(ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
@@ -103,6 +102,20 @@ public class CodigoDefectoServices {
             return responseOut(null,"",Response.Status.ACCEPTED);
     }
     
+    /***
+     * 
+     * @param codigo
+     * @return 
+     */
+    @POST
+    @Path("/eliminarCodigoDefecto")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String deleteCodigoDefecto(@FormParam("codigoDefecto") String codigo){
+        if(ServiceFacadeLocator.getInstanceCodigoDefectoFacade().deleteCodigoDefecto(codigo))
+            return responseOut(codigo,"",Response.Status.ACCEPTED);
+        else
+            return responseOut(null,"",Response.Status.CONFLICT);
+    }    
     
      /* 
      * @param lista el objeto que se va parsear a JSON
