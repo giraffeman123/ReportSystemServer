@@ -34,6 +34,15 @@ public class CodigoDefectoFacade {
     
     /***
      * 
+     * @param codigodefecto
+     * @return 
+     */
+    public CodigoDefecto getCodigoDefectoByCodigoDefecto(String codigodefecto){
+        return delegate.getCodigoDefectoByCodigoDefecto(codigodefecto);
+    }    
+    
+    /***
+     * 
      * @param codigo
      * @param gravedad
      * @param descripcion
@@ -59,35 +68,13 @@ public class CodigoDefectoFacade {
     
     /***
      * 
-     * @param area
-     * @param maquina
-     * @return un codigo con la inicial de area y las primeras inciales de maquina
+     * @param codigo
+     * @return
      */
-    public String makeCodigoElliot(String area, String maquina){
-        int contador = 0;
-        
-        // obtiene el primer caracter de area para hacer el codigo
-        String codigo = "" + area.charAt(0);
-        
-        // separa la cadena maquina por espacios,& o y y realiza un foreach por cada palabra
-        // obteniendo el primer caracter para hacer el codigo
-        String[] palabras = maquina.split(" |&");
-        for(String palabra : palabras){
-            codigo += palabra.charAt(0);
-        }
-        
-        // se obtienen todos los codigos de defecto con la misma maquina e area y se cuentan para obtener 
-        // el numero que sera el codigo
-        List<CodigoDefecto> codigos = ServiceLocator.getInstanceCodigoDefectoDAO().findAll();
-        for(CodigoDefecto codigoDf : codigos){
-            if(codigoDf.getMaquina().equalsIgnoreCase(maquina) && codigoDf.getArea().equalsIgnoreCase(area))
-                contador++;
-        }
-        
-        contador++;
-        codigo += contador;
-        return codigo;
-    }   
+    public boolean deleteCodigoDefecto(String codigo){
+        return delegate.deleteCodigoDefecto(codigo);
+    }
+      
     
     /***
      * @author Mariano Garfel

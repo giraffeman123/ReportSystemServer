@@ -27,6 +27,16 @@ public class CodigoDefectoDelegate {
     public List<CodigoDefecto> getAllCodigoDefectos(){
         return ServiceLocator.getInstanceCodigoDefectoDAO().findAll();
     }
+    
+    /***
+     * 
+     * @param codigodefecto
+     * @return 
+     */
+    public CodigoDefecto getCodigoDefectoByCodigoDefecto(String codigodefecto){
+      return ServiceLocator.getInstanceCodigoDefectoDAO().findByOneParameterUnique(codigodefecto,"codigoDefecto");
+    }    
+    
     /***
      * 
      * @param codigo
@@ -92,4 +102,55 @@ public class CodigoDefectoDelegate {
         return true;
     }
       
+    /***
+     * 
+     * @param codigo
+     * @return 
+     */
+    public boolean deleteCodigoDefecto(String codigo){
+        CodigoDefecto cod = ServiceLocator.getInstanceCodigoDefectoDAO()
+                .findByOneParameterUnique(codigo, "codigoDefecto");
+        if(cod == null)
+            return false;
+        
+        try{
+            ServiceLocator.getInstanceCodigoDefectoDAO().delete(cod);
+            remakeCodigosAfterDelete(cod.getArea(),cod.getMaquina());
+        }catch(Exception ex){
+            System.err.println("Error: "+ex);
+            return false;
+        }
+        return true;
+    }    
+    
+    /***
+     * 
+     * @param area
+     * @param maquina
+     */
+    public void remakeCodigosAfterDelete(String area, String maquina){
+        int contador = 0;
+        
+        // obtiene el primer caracter de area para hacer el codigo
+        String codigo = "" + area.charAt(0);
+        
+        // separa la cadena maquina por espacios,& o y y realiza un foreach por cada palabra
+        // obteniendo el primer caracter para hacer el codigo
+        String[] palabras = maquina.split(" |&");
+        for(String palabra : palabras){
+            codigo += palabra.charAt(0);
+        }
+        
+        // se obtienen todos los codigos de defecto con la misma maquina e area y se cuentan para obtener 
+        // el numero que sera el codigo
+        List<CodigoDefecto> codigos = ServiceLocator.getInstanceCodigoDefectoDAO().findAll();
+        for(CodigoDefecto codigoDf : codigos){
+            if(codigoDf.getMaquina().equalsIgnoreCase(maquina) && codigoDf.getArea().equalsIgnoreCase(area)){
+                contador++;
+                codigoDf.setCodigoDefecto(codigo+contador);
+                ServiceLocator.getInstanceCodigoDefectoDAO().update(codigoDf);
+            }
+        }
+    }    
+    
 }
