@@ -67,6 +67,22 @@ public class CodigoDefectoDelegate {
     
     /***
      * 
+     * @param area
+     * @param maquina
+     * @return 
+     */
+    public List<CodigoDefecto> getAllCodigoByAreaAndMaquina(String area, String maquina){
+        List<CodigoDefecto> allCodigoDefecto = ServiceLocator.getInstanceCodigoDefectoDAO().findAll();
+        List<CodigoDefecto> codigoDefecto = new ArrayList<CodigoDefecto>();
+        
+        for(CodigoDefecto codigo : allCodigoDefecto)
+            if(codigo.getArea().equalsIgnoreCase(area) && codigo.getMaquina().equalsIgnoreCase(maquina))
+                codigoDefecto.add(codigo);
+        
+        return codigoDefecto;
+    }
+    /***
+     * 
      * @param codigo
      * @param area
      * @param maquina

@@ -70,6 +70,16 @@ public class CodigoDefectoFacade {
     
     /***
      * 
+     * @param area
+     * @param maquina
+     * @return 
+     */
+    public List<CodigoDefecto> getAllCodigoByAreaAndMaquina(String area, String maquina){
+       return delegate.getAllCodigoByAreaAndMaquina(area, maquina);
+    }    
+    
+    /***
+     * 
      * @param codigo
      * @param gravedad
      * @param descripcion
