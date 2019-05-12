@@ -103,6 +103,22 @@ public class CodigoDefectoServices {
      * 
      * @param area
      * @param maquina
+     * @return 
+     */
+    @POST
+    @Path("/allCodigoDefectoByAreaAndMaquina")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllCodigoDefectoByAreaAndMaquina(@FormParam("area") String area,
+                                                 @FormParam("maquina") String maquina){
+        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
+                .getAllCodigoByAreaAndMaquina(area, maquina);
+        return responseOut(lista,"", Response.Status.ACCEPTED);
+    }
+    
+    /***
+     * 
+     * @param area
+     * @param maquina
      * @param gravedad
      * @param descripcion
      * @return 

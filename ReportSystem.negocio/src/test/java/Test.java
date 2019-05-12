@@ -29,16 +29,16 @@ public class Test {
 //            System.out.println("Codigo Defecto: "+CodigoDefecto.getCodigoDefecto());   
 //        }
 //      
-        Test test = new Test();
-        System.out.println(test.makeCodigoElliot("FuseBox", "Laser Machine"));
-
-//------------------------------------------------------------------------------------------------------------------
-        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectos();
-        System.out.println("");
-        
-        for(CodigoDefecto CodigoDefecto : lista){
-            System.out.println("Codigo Defecto: "+CodigoDefecto.getCodigoDefecto());   
-        }
+//        Test test = new Test();
+//        System.out.println(test.makeCodigoElliot("FuseBox", "Laser Machine"));
+//
+////------------------------------------------------------------------------------------------------------------------
+//        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectos();
+//        System.out.println("");
+//        
+//        for(CodigoDefecto CodigoDefecto : lista){
+//            System.out.println("Codigo Defecto: "+CodigoDefecto.getCodigoDefecto());   
+//        }
 //------------------------------------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------------------------------------
@@ -122,7 +122,8 @@ public class Test {
 //        
 //        System.out.println("----------");
 //        System.out.println(ConcatenadoNo);
-
+        System.out.println(ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoByAreaAndMaquina("Fusebox"
+                , "Greaser Machine"));
     }
     
     public String makeCodigoElliot(String area, String maquina){
