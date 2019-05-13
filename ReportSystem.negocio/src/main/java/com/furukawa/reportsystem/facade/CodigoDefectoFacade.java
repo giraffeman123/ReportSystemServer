@@ -28,8 +28,8 @@ public class CodigoDefectoFacade {
      * 
      * @return listado de Codigos de defectod
      */
-    public List<CodigoDefecto> getAllCodigoDefectos(){
-        return delegate.getAllCodigoDefectos();
+    public List<CodigoDefecto> getAllCodigoDefecto(){
+        return delegate.getAllCodigoDefecto();
     }
     
     /***
@@ -147,7 +147,7 @@ public class CodigoDefectoFacade {
         //---------------------------------------------------------------------------------------------------------------
 
         String codigoDefecto = Concatenado;
-        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectos();
+        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefecto();
         String cdsn = "";
 
     // -------------------------------------------------------------------------------------------------

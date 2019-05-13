@@ -31,15 +31,15 @@ public class CodigoDefectoServices {
 
     /***
      * @GET es el tipo de Peticion a la cual el metodo se convertira
-     * @PATH es el url bajo el cual se llamara al metodo getAllCodigoDefectos desde el navegador, en este caso /CodigoDefecto
+     * @PATH es el url bajo el cual se llamara al metodo getAllCodigoDefecto desde el navegador, en este caso /CodigoDefecto
      * @Produces es el tipo de formato MIME bajo el cual se dara la respuesta, en este caso JSON
      * @return todos los CodigoDefectos encontrados en String con formato JSON ; null
      */    
     @GET
-    @Path("/allCodigoDefectos")
+    @Path("/allCodigoDefecto")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAllCodigoDefectos() {
-        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectos();
+    public String getAllCodigoDefecto() {
+        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefecto();
         return responseOut(lista, "", Response.Status.ACCEPTED);
     }
     
@@ -63,7 +63,7 @@ public class CodigoDefectoServices {
      * @return 
      */
     @GET
-    @Path("/allcodigoDefectosByArea/{area}")
+    @Path("/allcodigoDefectoByArea/{area}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getAllCodigoDefetosByArea(@PathParam("area")String area){
         List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
@@ -77,9 +77,9 @@ public class CodigoDefectoServices {
      * @return 
      */
     @GET
-    @Path("/allcodigoDefectosByMaquina/{maquina}")
+    @Path("/allcodigoDefectoByMaquina/{maquina}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAllCodigoDefectosByMaquina(@PathParam("maquina")String maquina){
+    public String getAllCodigoDefectoByMaquina(@PathParam("maquina")String maquina){
         List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
                 .getAllCodigoDefectoByMaquina(maquina);
         return responseOut(lista,"", Response.Status.ACCEPTED);
@@ -91,9 +91,9 @@ public class CodigoDefectoServices {
      * @return 
      */
     @GET
-    @Path("/allcodigoDefectosByGravedad/{gravedad}")
+    @Path("/allcodigoDefectoByGravedad/{gravedad}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAllCodigoDefectosByGravedad(@PathParam("gravedad")String gravedad){
+    public String getAllCodigoDefectoByGravedad(@PathParam("gravedad")String gravedad){
         List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
                 .getAllCodigoDefectoByGravedad(gravedad);
         return responseOut(lista,"", Response.Status.ACCEPTED);

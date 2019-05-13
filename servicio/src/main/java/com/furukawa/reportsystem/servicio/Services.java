@@ -44,18 +44,6 @@ public class Services {
 
     }
     
-    @GET
-    @Path("/codigoDefecto")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getAllCodigoDefectos() {
-
-        /* Esta linea de codigo es el problema que estoy solucionando ahora. */
-        /* El problema es: como parsear la clase lider en formato JSON */
-        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectos();
-        
-        return reponseOut(lista, "", Response.Status.CREATED);
-
-    }
     
     /***
      * 

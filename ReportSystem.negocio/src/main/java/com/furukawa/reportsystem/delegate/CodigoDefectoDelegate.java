@@ -24,7 +24,7 @@ public class CodigoDefectoDelegate {
      * 
      * @return listado de CodigoDefectos
      */
-    public List<CodigoDefecto> getAllCodigoDefectos(){
+    public List<CodigoDefecto> getAllCodigoDefecto(){
         return ServiceLocator.getInstanceCodigoDefectoDAO().findAll();
     }
     
