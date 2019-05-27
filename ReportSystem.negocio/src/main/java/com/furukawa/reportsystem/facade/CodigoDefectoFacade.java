@@ -8,6 +8,7 @@ package com.furukawa.reportsystem.facade;
 import com.furukawa.reportsystem.delegate.CodigoDefectoDelegate;
 import com.furukawa.reportsystem.entidad.CodigoDefecto;
 import com.furukawa.reportsystem.integracion.ServiceFacadeLocator;
+import com.furukawa.reportsystem.integracion.ServiceLocator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -27,16 +28,97 @@ public class CodigoDefectoFacade {
      * 
      * @return listado de Codigos de defectod
      */
-    public List<CodigoDefecto> getAllCodigoDefectos(){
-        return delegate.getAllCodigoDefectos();
+    public List<CodigoDefecto> getAllCodigoDefecto(){
+        return delegate.getAllCodigoDefecto();
     }
     
+    /***
+     * 
+     * @param codigodefecto
+     * @return 
+     */
+    public CodigoDefecto getCodigoDefectoByCodigoDefecto(String codigodefecto){
+        return delegate.getCodigoDefectoByCodigoDefecto(codigodefecto);
+    }    
     
+    /***
+     * @param area
+     *  return Area Encontrada
+     * @return 
+     */
+    public List<CodigoDefecto> getAllCodigoDefectoByArea(String area){
+     return delegate.getAllCodigoDefectoByArea(area);
+    }
+       
+    /***
+     * 
+     * @param maquina
+     * @return 
+     */
+    public List<CodigoDefecto> getAllCodigoDefectoByMaquina(String maquina){
+     return delegate.getAllCodigoDefectoByMaquina(maquina);
+    }
+    
+    /***
+     * 
+     * @param gravedad
+     * @return 
+     */
+    public List<CodigoDefecto> getAllCodigoDefectoByGravedad(String gravedad){
+     return delegate.getAllCodigoDefectoByGravedad(gravedad);
+    }    
+    
+    /***
+     * 
+     * @param area
+     * @param maquina
+     * @return 
+     */
+    public List<CodigoDefecto> getAllCodigoByAreaAndMaquina(String area, String maquina){
+       return delegate.getAllCodigoByAreaAndMaquina(area, maquina);
+    }    
+    
+    /***
+     * 
+     * @param codigo
+     * @param gravedad
+     * @param descripcion
+     * @return verdadero si se actualizo el codigo defecto ; falso en caso contrario
+     */    
+    public Boolean updateCodigoDefecto(String codigo, String gravedad, 
+                                        String descripcion){
+        return delegate.updateCodigoDefecto(codigo, gravedad, descripcion);
+    }
+    
+    /***
+     * 
+     * @param area
+     * @param maquina
+     * @param gravedad
+     * @param descripcion
+     * @return 
+     */
     public boolean saveCodigoDefecto(String area, String maquina, String gravedad, String descripcion){
         String codigo = ObtenerCodigoDefecto(area,maquina);
         return delegate.saveCodigoDefecto(codigo, area, maquina, gravedad, descripcion);
     }    
     
+    /***
+     * 
+     * @param codigo
+     * @return
+     */
+    public boolean deleteCodigoDefecto(String codigo){
+        return delegate.deleteCodigoDefecto(codigo);
+    }
+      
+    
+    /***
+     * @author Mariano Garfel
+     * @param area
+     * @param maquina
+     * @return un codigo con la inicial de area y las primeras inciales de maquina
+     */    
     public String ObtenerCodigoDefecto(String area, String maquina){
     // METODO PARA CREAR EL CODIGO DE DEFECTO SIN NUMERO
         String mIniciales = "";
@@ -65,7 +147,7 @@ public class CodigoDefectoFacade {
         //---------------------------------------------------------------------------------------------------------------
 
         String codigoDefecto = Concatenado;
-        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectos();
+        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefecto();
         String cdsn = "";
 
     // -------------------------------------------------------------------------------------------------
@@ -104,6 +186,6 @@ public class CodigoDefectoFacade {
             System.out.println("----------");
             System.out.println(ConcatenadoNo);
         
-    return ConcatenadoNo;
+        return ConcatenadoNo;
     }
 }
