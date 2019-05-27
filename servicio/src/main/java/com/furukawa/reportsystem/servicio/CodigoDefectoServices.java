@@ -31,35 +31,148 @@ public class CodigoDefectoServices {
 
     /***
      * @GET es el tipo de Peticion a la cual el metodo se convertira
-     * @PATH es el url bajo el cual se llamara al metodo getAllCodigoDefectos desde el navegador, en este caso /CodigoDefecto
+     * @PATH es el url bajo el cual se llamara al metodo getAllCodigoDefecto desde el navegador, en este caso /CodigoDefecto
      * @Produces es el tipo de formato MIME bajo el cual se dara la respuesta, en este caso JSON
      * @return todos los CodigoDefectos encontrados en String con formato JSON ; null
      */    
     @GET
-    @Path("/allCodigoDefectos")
+    @Path("/allCodigoDefecto")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAllCodigoDefectos() {
-        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefectos();
+    public String getAllCodigoDefecto() {
+        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade().getAllCodigoDefecto();
         return responseOut(lista, "", Response.Status.ACCEPTED);
     }
     
- 
+    /***
+     * 
+     * @param codigodefecto
+     * @return 
+     */
+    @GET
+    @Path("/codigoDefectoByCodigoDefecto/{codigoDefecto}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getCodigoDefectoByCodigoDefectos(@PathParam("codigoDefecto") String codigodefecto){
+        CodigoDefecto codigo = ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
+                .getCodigoDefectoByCodigoDefecto(codigodefecto);
+        return responseOut(codigo,"", Response.Status.ACCEPTED);
+    }    
+    
+    /***
+     * 
+     * @param area
+     * @return 
+     */
+    @GET
+    @Path("/allcodigoDefectoByArea/{area}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllCodigoDefetosByArea(@PathParam("area")String area){
+        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
+                .getAllCodigoDefectoByArea(area);
+        return responseOut(lista,"", Response.Status.ACCEPTED);
+    }
+    
+    /***
+     * 
+     * @param maquina
+     * @return 
+     */
+    @GET
+    @Path("/allcodigoDefectoByMaquina/{maquina}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllCodigoDefectoByMaquina(@PathParam("maquina")String maquina){
+        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
+                .getAllCodigoDefectoByMaquina(maquina);
+        return responseOut(lista,"", Response.Status.ACCEPTED);
+    }
+    
+    /***
+     * 
+     * @param gravedad
+     * @return 
+     */
+    @GET
+    @Path("/allcodigoDefectoByGravedad/{gravedad}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllCodigoDefectoByGravedad(@PathParam("gravedad")String gravedad){
+        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
+                .getAllCodigoDefectoByGravedad(gravedad);
+        return responseOut(lista,"", Response.Status.ACCEPTED);
+    }
+    
+    /***
+     * 
+     * @param area
+     * @param maquina
+     * @return 
+     */
+    @POST
+    @Path("/allCodigoDefectoByAreaAndMaquina")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllCodigoDefectoByAreaAndMaquina(@FormParam("area") String area,
+                                                 @FormParam("maquina") String maquina){
+        List<CodigoDefecto> lista = ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
+                .getAllCodigoByAreaAndMaquina(area, maquina);
+        return responseOut(lista,"", Response.Status.ACCEPTED);
+    }
+    
+    /***
+     * 
+     * @param area
+     * @param maquina
+     * @param gravedad
+     * @param descripcion
+     * @return 
+     */
     @POST
     @Path("/nuevoCodigoDefecto")
     @Produces(MediaType.APPLICATION_JSON)
     public String saveCodigoDefecto(
-                            
                             @FormParam("area") String area, 
                             @FormParam("maquina") String maquina,
                             @FormParam("gravedad") String gravedad, 
                             @FormParam("descripcion") String descripcion){
         
-        if(ServiceFacadeLocator.getInstanceCodigoDefectoFacade().saveCodigoDefecto(area, maquina, gravedad, descripcion))
+        if(ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
+                .saveCodigoDefecto(area, maquina, gravedad, descripcion))
             return responseOut(area,"",Response.Status.ACCEPTED);
         else
             return responseOut(null,"",Response.Status.ACCEPTED);
     }
     
+    /***
+     * 
+     * @param codigo
+     * @param gravedad
+     * @param descripcion
+     * @return 
+     */
+    @POST
+    @Path("/modificarCodigoDefecto")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateCodigoDefecto(@FormParam("codigoDefecto") String codigo,
+                            @FormParam("gravedad") String gravedad, 
+                            @FormParam("descripcion") String descripcion){
+        if(ServiceFacadeLocator.getInstanceCodigoDefectoFacade()
+                .updateCodigoDefecto(codigo, gravedad, descripcion))
+            return responseOut(codigo,"",Response.Status.ACCEPTED);
+        else
+            return responseOut(null,"",Response.Status.ACCEPTED);
+    }
+    
+    /***
+     * 
+     * @param codigo
+     * @return 
+     */
+    @POST
+    @Path("/eliminarCodigoDefecto")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String deleteCodigoDefecto(@FormParam("codigoDefecto") String codigo){
+        if(ServiceFacadeLocator.getInstanceCodigoDefectoFacade().deleteCodigoDefecto(codigo))
+            return responseOut(codigo,"",Response.Status.ACCEPTED);
+        else
+            return responseOut(null,"",Response.Status.CONFLICT);
+    }    
     
      /* 
      * @param lista el objeto que se va parsear a JSON
