@@ -183,6 +183,15 @@ public class CodigoDefectoFacade {
                 ConcatenadoNo = Concatenado + contador;
             }
 
+            // validación para que no se repita codigo en caso de ya existir uno uwu
+            for(CodigoDefecto CodigoDefecto : lista){
+                String caden = CodigoDefecto.getCodigoDefecto();
+                if(caden.equalsIgnoreCase(ConcatenadoNo)){
+                    contador++;
+                    ConcatenadoNo = Concatenado + contador;
+                }
+            }
+            
             System.out.println("----------");
             System.out.println(ConcatenadoNo);
         
