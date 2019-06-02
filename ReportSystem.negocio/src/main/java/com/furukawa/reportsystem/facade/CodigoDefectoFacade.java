@@ -182,6 +182,15 @@ public class CodigoDefectoFacade {
                 contador ++;
                 ConcatenadoNo = Concatenado + contador;
             }
+            
+            for(CodigoDefecto CodigoDefecto : lista){
+                String caden = CodigoDefecto.getCodigoDefecto();
+                if(caden.equalsIgnoreCase(ConcatenadoNo)){
+                    contador ++;
+                    ConcatenadoNo = Concatenado + contador; 
+                    
+                }
+            }
 
             System.out.println("----------");
             System.out.println(ConcatenadoNo);
